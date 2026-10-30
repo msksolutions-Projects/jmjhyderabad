@@ -56,6 +56,7 @@ describe("Homepage banner order", () => {
     expect(slides.map((slide) => slide.base)).toEqual(
       Array.from({ length: 13 }, (_, i) => `/media/assembly-banners/assembly-${String(i + 1).padStart(2, "0")}`),
     );
-    expect(slides.every((slide) => slide.fit !== "contain")).toBe(true);
+    // Only pictures on a plain background are shown whole, on that same colour (no blur, no coloured panels).
+    expect(slides.filter((slide) => slide.fit === "contain").every((slide) => slide.background === "#ffffff")).toBe(true);
   });
 });

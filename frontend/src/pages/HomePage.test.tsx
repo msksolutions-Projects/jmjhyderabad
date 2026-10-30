@@ -76,7 +76,12 @@ describe("HomePage", () => {
     for (const src of portraits) expect(sources).toContain(src);
     const gallery = screen.getByRole("region", { name: /province photographs/i });
     expect(gallery.parentElement).toHaveClass("hero-carousel-section");
-    expect(gallery.querySelector(".hero-gallery__slide--contain")).toBeNull();
+    // No blur and no coloured side panels: photos fill the banner; the one picture shown whole sits on white,
+    // the same colour as its own background.
+    expect(gallery.querySelector(".hero-gallery__backdrop")).toBeNull();
+    for (const slide of gallery.querySelectorAll<HTMLElement>(".hero-gallery__slide--contain")) {
+      expect(slide.style.background).toMatch(/rgb\(255, 255, 255\)|#ffffff/i);
+    }
     for (const name of [/loving tribute/i, /quote of the day/i]) {
       expect(screen.queryByText(name)).not.toBeInTheDocument();
     }

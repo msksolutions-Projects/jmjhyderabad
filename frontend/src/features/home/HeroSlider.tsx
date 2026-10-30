@@ -3,34 +3,19 @@ import { Icon } from "@/components/ui/Icon";
 import { slides, type Slide } from "./slides";
 
 const INTERVAL = 6000;
-const srcSet = (base: string) => `${base}-sm.webp 600w, ${base}-md.webp 1000w, ${base}.webp 1600w`;
-
-/**
- * How far a photo's shape may differ from the banner before it is shown whole
- * (over a soft blurred copy of itself) instead of being cropped to fill.
- * 0.72 → a photo may lose at most ~28% of its width or height to cropping.
- */
-const COVER_TOLERANCE = 0.72;
-
-function fitFor(slide: Slide, stageRatio: number): "cover" | "contain" {
-  if (slide.fit) return slide.fit;
-  if (!stageRatio) return "cover";
-  const photoRatio = slide.width / slide.height;
-  const similarity = Math.min(photoRatio, stageRatio) / Math.max(photoRatio, stageRatio);
-  return similarity >= COVER_TOLERANCE ? "cover" : "contain";
-}
+/** Widths match the real files, so the browser downloads the smallest image that is still sharp. */
+const srcSet = (slide: Slide) =>
+  `${slide.base}-sm.webp 600w, ${slide.base}-md.webp 1000w, ${slide.base}.webp ${Math.max(slide.width, 1001)}w`;
 
 export function HeroSlider() {
   const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState(true);
   const [hovered, setHovered] = useState(false);
-  const [stageRatio, setStageRatio] = useState(0);
   // Only the first slide is fetched up front (fast first paint); neighbours follow once the page is idle.
   const [loaded, setLoaded] = useState<Set<number>>(() => new Set([0]));
   const indexRef = useRef(index);
   indexRef.current = index;
   const touchX = useRef<number | null>(null);
-  const stageRef = useRef<HTMLDivElement>(null);
 
   const reduceMotion =
     typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
@@ -50,21 +35,6 @@ export function HeroSlider() {
     },
     [preload],
   );
-
-  // Measure the banner so each photo can choose between filling it and being shown whole.
-  useEffect(() => {
-    const el = stageRef.current;
-    if (!el) return;
-    const measure = () => {
-      const { width, height } = el.getBoundingClientRect();
-      if (width && height) setStageRatio(width / height);
-    };
-    measure();
-    if (typeof ResizeObserver === "undefined") return;
-    const ro = new ResizeObserver(measure);
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
 
   // Fetch the neighbouring slides after the page has finished its first load.
   useEffect(() => {
@@ -108,42 +78,34 @@ export function HeroSlider() {
       }}
     >
       <h1 className="visually-hidden">Congregation of Jesus Mary Joseph — Hyderabad Province</h1>
-      <div className="hero-gallery__stage" ref={stageRef}>
+      <div className="hero-gallery__stage">
         {slides.map((slide, i) => {
           const active = i === index;
           const show = loaded.has(i);
-          const fit = fitFor(slide, stageRatio);
-          const imgProps = {
-            src: `${slide.base}-md.webp`,
-            srcSet: srcSet(slide.base),
-            sizes: "100vw",
-            width: slide.width,
-            height: slide.height,
-            loading: (i === 0 ? "eager" : "lazy") as "eager" | "lazy",
-            decoding: (i === 0 ? "sync" : "async") as "sync" | "async",
-          };
+          const fit = slide.fit ?? "cover";
           return (
             <figure
               key={slide.base}
               className={`hero-gallery__slide hero-gallery__slide--${fit}${active ? " is-active" : ""}`}
+              style={fit === "contain" ? { background: slide.background ?? "#ffffff" } : undefined}
               aria-hidden={!active}
               aria-roledescription="slide"
               aria-label={`${i + 1} of ${slides.length}`}
             >
               {show && (
-                <>
-                  {fit === "contain" && (
-                    // Same file as the photo (no extra download), blurred to fill the sides softly.
-                    <img {...imgProps} className="hero-gallery__backdrop" alt="" aria-hidden="true" />
-                  )}
-                  <img
-                    {...imgProps}
-                    className="hero-gallery__photo"
-                    alt={slide.alt}
-                    style={fit === "cover" && slide.focus ? { objectPosition: slide.focus } : undefined}
-                    {...{ fetchpriority: i === 0 ? "high" : "low" }}
-                  />
-                </>
+                <img
+                  className="hero-gallery__photo"
+                  src={`${slide.base}-md.webp`}
+                  srcSet={srcSet(slide)}
+                  sizes="100vw"
+                  alt={slide.alt}
+                  width={slide.width}
+                  height={slide.height}
+                  style={fit === "cover" && slide.focus ? { objectPosition: slide.focus } : undefined}
+                  loading={i === 0 ? "eager" : "lazy"}
+                  decoding={i === 0 ? "sync" : "async"}
+                  {...{ fetchpriority: i === 0 ? "high" : "low" }}
+                />
               )}
             </figure>
           );

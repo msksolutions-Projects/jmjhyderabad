@@ -853,11 +853,11 @@ a.stat:hover { border-color: var(--sky-500); transform: translateY(-2px); }
 /* ==========================================================================
    Home photo carousel — full-bleed photographs, no blue letterbox panels
    ========================================================================== */
-.hero-gallery { position: relative; width: 100%; overflow: hidden; background: #0d2a4a; }
+.hero-gallery { position: relative; width: 100%; overflow: hidden; background: #f8fafc; }
 /* Banner size per device: a steady shape on phones/tablets, and on desktops never taller
    than the screen space left under the header, so the whole photo is seen without scrolling. */
 .hero-gallery__stage {
-  position: relative; width: 100%; overflow: hidden; background: #0d2a4a;
+  position: relative; width: 100%; overflow: hidden; background: #f8fafc;
   aspect-ratio: 4 / 3; max-height: 72vh; max-height: 72svh;
 }
 @media (min-width: 600px) { .hero-gallery__stage { aspect-ratio: 16 / 9; max-height: calc(100vh - 230px); max-height: calc(100svh - 230px); min-height: 340px; } }
@@ -866,9 +866,8 @@ a.stat:hover { border-color: var(--sky-500); transform: translateY(-2px); }
 .hero-gallery__slide { position: absolute; inset: 0; margin: 0; opacity: 0; visibility: hidden; transition: opacity 0.9s var(--ease), visibility 0.9s; overflow: hidden; }
 .hero-gallery__slide.is-active { opacity: 1; visibility: visible; }
 .hero-gallery__photo { position: relative; z-index: 1; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
-.hero-gallery__slide--contain .hero-gallery__photo { object-fit: contain; object-position: 50% 50%; filter: drop-shadow(0 10px 30px rgba(0,0,0,.35)); }
-/* Soft, blurred copy of the same photo behind a photo that is shown whole — no flat coloured side panels. */
-.hero-gallery__backdrop { position: absolute; inset: -6%; z-index: 0; width: 112%; height: 112%; object-fit: cover; filter: blur(28px) saturate(1.15) brightness(.72); transform: translateZ(0); }
+/* Only for pictures on a plain background (set per slide): shown whole on that same colour, so it looks seamless. */
+.hero-gallery__slide--contain .hero-gallery__photo { object-fit: contain; object-position: 50% 50%; }
 .hero-gallery__slide.is-active .hero-gallery__photo { animation: none; }
 @media (prefers-reduced-motion: reduce) { .hero-gallery__slide { transition: none; } }
 
@@ -887,7 +886,7 @@ a.stat:hover { border-color: var(--sky-500); transform: translateY(-2px); }
 .hero-gallery__arrow--next { right: 12px; }
 @media (max-width: 599px) { .hero-gallery__arrow { width: 38px; height: 38px; } .hero-gallery__arrow--prev { left: 8px; } .hero-gallery__arrow--next { right: 8px; } }
 
-.hero-gallery__bar { position: absolute; z-index: 3; left: 50%; bottom: 14px; transform: translateX(-50%); display: flex; align-items: center; justify-content: center; gap: 12px; max-width: calc(100% - 24px); padding: 6px 12px; border: 1px solid rgba(255,255,255,.7); border-radius: 999px; background: rgba(255,255,255,.90); color: var(--navy-800); box-shadow: 0 5px 18px rgba(8,37,70,.2); backdrop-filter: blur(12px); }
+.hero-gallery__bar { position: absolute; z-index: 3; left: 50%; bottom: 14px; transform: translateX(-50%); display: flex; align-items: center; justify-content: center; gap: 12px; max-width: calc(100% - 24px); padding: 6px 12px; border: 1px solid rgba(255,255,255,.7); border-radius: 999px; background: #fff; color: var(--navy-800); box-shadow: 0 5px 18px rgba(8,37,70,.2); }
 .hero-gallery__dots { display: flex; gap: 2px; flex-wrap: wrap; justify-content: center; }
 .hero-gallery__dot { width: 26px; height: 26px; padding: 0; border: 0; background: transparent; display: grid; place-items: center; }
 .hero-gallery__dot::before { content: ""; width: 8px; height: 8px; border-radius: 999px; background: #8ca0b7; transition: width 0.25s, background 0.25s; }

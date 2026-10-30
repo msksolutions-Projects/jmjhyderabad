@@ -4,16 +4,17 @@
 
 ### Homepage banner (all devices)
 - Banner height is now set per device: 4:3 on phones, 16:9 on tablets, a wide frame on desktops capped so the
-  photo always fits on screen under the header (no scrolling to see the whole banner).
-- Each photo picks how to display itself automatically. If it is close to the banner's shape it fills the frame.
-  If it isn't (portraits, group photos on wide screens) it is shown whole over a soft blurred copy of itself, so
-  heads are never cut off and there are no flat coloured side panels. Change `COVER_TOLERANCE` in
-  `src/features/home/HeroSlider.tsx` to make it crop more or less. Set `fit: "cover"` or `fit: "contain"` on a slide
-  in `slides.ts` to force one mode for that slide.
-- Phones: the 13 slide dots used to wrap into three rows over the middle of the photo. Phones now show a small
-  "3 / 13" counter and a pause button in the corner. Swipe or use the arrows to change slides.
-- Only the first banner photo loads at first. The neighbouring slides load after the page has finished loading.
-  The slideshow pauses while the browser tab is hidden.
+  photo always fits on screen under the header.
+- Every photo fills the banner edge to edge, with no blur effects and no coloured side panels. Each slide has a `focus`
+  point in `src/features/home/slides.ts` that keeps faces in view when the edges are cropped. If a slide crops
+  badly, adjust its `focus` (the second number moves the view up or down).
+- Slide 1 (the Holy Family painting) had blurred strips baked into the image file itself. Those were cropped out.
+- Slide 2 (the Founder's oval portrait) is shown whole on white, which matches the picture's own white background.
+- The screen-reader descriptions (alt text) of slides 5–13 did not match their photos. They have been corrected.
+- Phones: the 13 slide dots used to wrap into three rows over the photo. Phones now show a small "3 / 13" counter
+  and a pause button in the corner. Swipe or use the arrows to change slides.
+- Only the first banner photo loads at first. The others load after the page is ready. The slideshow pauses while
+  the browser tab is hidden.
 
 ### Speed
 - The Playfair Display heading font is now self-hosted and preloaded. It replaces the render-blocking Google Fonts request.
