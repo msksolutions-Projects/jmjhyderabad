@@ -27,10 +27,13 @@ describe("Province Assembly announcement", () => {
     expect(screen.getByRole("dialog")).toBeInTheDocument();
   });
 
-  it("uses the exact left-to-right Province Assembly announcement", () => {
+  it("presents one readable announcement without overlapping scrolling duplicates", () => {
     render(<ProvinceAssemblyAnnouncement />);
     expect(screen.getByRole("button", { name: /Rekindling Commitment & Revitalizing Mission.*31 October 2026/i })).toBeInTheDocument();
-    expect(document.querySelectorAll(".assembly-ticker__moving")).toHaveLength(2);
+    const ticker = screen.getByRole("complementary", { name: /province assembly 2026 announcement/i });
+    expect(ticker.querySelectorAll(".assembly-ticker__message")).toHaveLength(1);
+    expect(ticker.querySelectorAll(".assembly-ticker__moving")).toHaveLength(0);
+    expect(screen.getByRole("button", { name: /view invitation/i })).toBeInTheDocument();
   });
 });
 

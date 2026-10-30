@@ -885,74 +885,70 @@ a.stat:hover { border-color: var(--sky-500); transform: translateY(-2px); }
 .hero-gallery__play svg { width: 16px; height: 16px; }
 @media (max-width: 420px) { .hero-gallery__dot { width: 22px; } .hero-gallery__count { display: none; } }
 
-/* Province Assembly 2026 — left-to-right announcement and invitation popup. */
+/* Province Assembly 2026 — a readable, responsive announcement and invitation popup. */
 .assembly-ticker {
-  display: flex;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr) max-content;
   align-items: stretch;
-  min-height: 48px;
-  background: var(--navy-800);
+  min-height: 54px;
+  background: linear-gradient(110deg, #103f72 0%, #15548c 66%, #082546 100%);
   color: #fff;
-  border-bottom: 2px solid var(--gold-300);
+  border-bottom: 2px solid var(--gold-500);
   overflow: hidden;
 }
 .assembly-ticker__label {
-  position: relative;
-  z-index: 1;
   display: flex;
   align-items: center;
-  flex: 0 0 auto;
-  padding: 10px 18px;
+  justify-content: center;
+  max-width: 230px;
+  padding: 10px 19px;
   background: var(--navy-900);
   color: #fff;
   font-weight: 800;
-  font-size: 0.85rem;
-  letter-spacing: 0.035em;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  letter-spacing: 0.015em;
 }
 .assembly-ticker__open {
-  position: relative;
-  flex: 1;
+  display: flex;
+  align-items: center;
   min-width: 0;
   border: 0;
-  padding: 0;
+  padding: 10px clamp(12px, 2vw, 30px);
   background: transparent;
   color: #fff;
   cursor: pointer;
   overflow: hidden;
   text-align: left;
 }
-.assembly-ticker__moving {
-  position: absolute;
-  top: 50%;
-  left: 0;
+.assembly-ticker__message {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
   white-space: nowrap;
-  font-size: 0.95rem;
-  font-weight: 700;
-  line-height: 1.4;
-  animation: assembly-scroll-left-to-right 36s linear infinite;
-  transform: translateY(-50%);
-  will-change: transform;
+  text-overflow: ellipsis;
+  font-size: clamp(0.8rem, .3vw + .75rem, .94rem);
+  font-weight: 600;
+  line-height: 1.5;
 }
-.assembly-ticker__moving--second { animation-delay: -18s; }
-.assembly-ticker__open:hover .assembly-ticker__moving,
-.assembly-ticker__open:focus-visible .assembly-ticker__moving { animation-play-state: paused; }
-@keyframes assembly-scroll-left-to-right {
-  from { transform: translate(-100%, -50%); }
-  to { transform: translate(100vw, -50%); }
+.assembly-ticker__message strong { color: #f9dd9d; font-weight: 800; }
+.assembly-ticker__separator { display: inline-block; padding: 0 9px; color: #f9dd9d; }
+.assembly-ticker__open:hover, .assembly-ticker__open:focus-visible {
+  background: rgba(255,255,255,.09);
 }
 .assembly-ticker__view {
-  z-index: 1;
-  flex: 0 0 auto;
   border: 0;
   border-left: 1px solid rgba(255,255,255,0.25);
   background: var(--navy-900);
-  padding: 0 16px;
+  padding: 9px 20px;
   color: #fff;
-  font-size: 0.85rem;
+  font-size: 0.81rem;
   font-weight: 800;
   cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  white-space: nowrap;
 }
+.assembly-ticker__view span { margin-left: 6px; color: var(--gold-300); }
 .assembly-ticker__view:hover { background: var(--navy-700); }
 body.assembly-modal-open { overflow: hidden; }
 .assembly-overlay {
@@ -1043,8 +1039,25 @@ body.assembly-modal-open { overflow: hidden; }
   cursor: pointer;
 }
 @media (max-width: 650px) {
-  .assembly-ticker__label { padding: 10px; font-size: 0.72rem; max-width: 112px; }
-  .assembly-ticker__view { padding: 0 10px; font-size: 0.74rem; }
+  .assembly-ticker {
+    grid-template-columns: minmax(0,1fr) max-content;
+    grid-template-areas: "label action" "message message";
+    min-height: 0;
+  }
+  .assembly-ticker__label {
+    grid-area: label;
+    justify-content: flex-start;
+    max-width: none;
+    padding: 10px 14px;
+    font-size: .79rem;
+  }
+  .assembly-ticker__open {
+    grid-area: message;
+    padding: 10px 14px 12px;
+    border-top: 1px solid rgba(255,255,255,.15);
+  }
+  .assembly-ticker__message { white-space: normal; overflow: visible; font-size: .81rem; line-height: 1.55; }
+  .assembly-ticker__view { grid-area: action; padding: 8px 14px; font-size: .77rem; }
   .assembly-overlay { padding: 8px; align-items: stretch; }
   .assembly-dialog { max-height: calc(100dvh - 16px); margin: auto; }
   .assembly-dialog__header { padding: 10px 13px; }
@@ -1057,9 +1070,9 @@ body.assembly-modal-open { overflow: hidden; }
   .assembly-dialog__footer a { font-size: 0.77rem; }
   .assembly-dialog__footer button { padding-inline: 10px; font-size: 0.8rem; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .assembly-ticker__moving { animation: none; transform: translate(0, -50%); }
-  .assembly-ticker__moving--second { display: none; }
+@media (max-width: 350px) {
+  .assembly-ticker__label { font-size: .73rem; padding-inline: 10px; }
+  .assembly-ticker__view { font-size: .71rem; padding-inline: 10px; }
 }
 
 /* Provincial Council — original portrait cards supplied by Hyderabad Province. */

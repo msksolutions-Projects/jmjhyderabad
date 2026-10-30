@@ -73,11 +73,14 @@ export function ProvinceAssemblyAnnouncement() {
           aria-label={`${ANNOUNCEMENT} Open invitation and programme`}
           title="Click to view the invitation and programme"
         >
-          <span className="assembly-ticker__moving" aria-hidden="true">{ANNOUNCEMENT}</span>
-          <span className="assembly-ticker__moving assembly-ticker__moving--second" aria-hidden="true">{ANNOUNCEMENT}</span>
+          <span className="assembly-ticker__message" aria-hidden="true">
+            <strong>31 October 2026</strong>
+            <span className="assembly-ticker__separator" aria-hidden="true">·</span>
+            Rekindling Commitment &amp; Revitalizing Mission
+          </span>
         </button>
         <button type="button" className="assembly-ticker__view" onClick={() => setOpen(true)}>
-          View invitation
+          View invitation <span aria-hidden="true">↗</span>
         </button>
       </aside>
 
