@@ -1,0 +1,64 @@
+{
+  "_readme": "All nine PDFs are hosted locally under public/documents/periodicals, without Google Drive links.",
+  "jubilee": [
+    {
+      "title": "Jubilee Vibes 3",
+      "date": "July – December 2025",
+      "file": "/documents/periodicals/jubilee-vibes-3.pdf",
+      "cover": "/media/covers/periodicals/jubilee-vibes-3.jpg",
+      "bytes": 3868154
+    },
+    {
+      "title": "Jubilee Vibes 2",
+      "date": "April – July 2025",
+      "file": "/documents/periodicals/jubilee-vibes-2.pdf",
+      "cover": "/media/covers/periodicals/jubilee-vibes-2.jpg",
+      "bytes": 3496513
+    },
+    {
+      "title": "Jubilee Vibes 1",
+      "date": "January – March 2025",
+      "file": "/documents/periodicals/jubilee-vibes-1.pdf",
+      "cover": "/media/covers/periodicals/jubilee-vibes-1.jpg",
+      "bytes": 2410049
+    }
+  ],
+  "newsflash": [
+    {
+      "title": "News Flash 6",
+      "file": "/documents/periodicals/news-flash-6.pdf",
+      "cover": "/media/covers/periodicals/news-flash-6.jpg",
+      "bytes": 4653256
+    },
+    {
+      "title": "News Flash 5",
+      "file": "/documents/periodicals/news-flash-5.pdf",
+      "cover": "/media/covers/periodicals/news-flash-5.jpg",
+      "bytes": 14984683
+    },
+    {
+      "title": "News Flash 4",
+      "file": "/documents/periodicals/news-flash-4.pdf",
+      "cover": "/media/covers/periodicals/news-flash-4.jpg",
+      "bytes": 8385030
+    },
+    {
+      "title": "News Flash 3",
+      "file": "/documents/periodicals/news-flash-3.pdf",
+      "cover": "/media/covers/periodicals/news-flash-3.jpg",
+      "bytes": 12686078
+    },
+    {
+      "title": "News Flash 2",
+      "file": "/documents/periodicals/news-flash-2.pdf",
+      "cover": "/media/covers/periodicals/news-flash-2.jpg",
+      "bytes": 5799705
+    },
+    {
+      "title": "News Flash 1 — Renovation of the Grave Area",
+      "file": "/documents/periodicals/news-flash-1.pdf",
+      "cover": "/media/covers/periodicals/news-flash-1.jpg",
+      "bytes": 1930412
+    }
+  ]
+}
