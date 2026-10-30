@@ -9,3 +9,9 @@
 
 /media/*
   Cache-Control: public, max-age=2592000
+
+/brand/*
+  Cache-Control: public, max-age=2592000
+
+/documents/*
+  Cache-Control: public, max-age=2592000

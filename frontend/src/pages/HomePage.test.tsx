@@ -68,9 +68,9 @@ describe("HomePage", () => {
     expect(within(messageCard).getByRole("link", { name: /read more/i })).toHaveAttribute("href", "/message-from-superior-general");
     expect(within(messageCard).getByRole("link", { name: /message from our provincial superior/i })).toHaveAttribute("href", "/province/provincial-message");
     const portraits = [
-      "/brand/congregation-founder.png",
-      "/brand/congregation-mary-glowrey.png",
-      "/brand/congregation-superior-general.png",
+      "/brand/congregation-founder.webp",
+      "/brand/congregation-mary-glowrey.webp",
+      "/brand/congregation-superior-general.webp",
     ];
     const sources = screen.getAllByRole("img").map((img) => img.getAttribute("src"));
     for (const src of portraits) expect(sources).toContain(src);

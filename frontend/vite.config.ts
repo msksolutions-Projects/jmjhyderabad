@@ -26,7 +26,7 @@ export default defineConfig(({ mode }) => {
       transformIndexHtml: {
         order: "post",
         handler: (html: string, ctx) => {
-          const files = Object.keys(ctx.bundle ?? {}).filter((f) => /(inter|roboto)-latin-wght-normal-[\w-]+\.woff2$/.test(f));
+          const files = Object.keys(ctx.bundle ?? {}).filter((f) => /(inter-latin-wght-normal|roboto-latin-wght-normal|playfair-display-latin-700-normal)-[\w-]+\.woff2$/.test(f));
           const tags = files.map((f) => `<link rel="preload" as="font" type="font/woff2" href="/${f}" crossorigin>`).join("\n    ");
           return tags ? html.replace("</title>", `</title>\n    ${tags}`) : html;
         },

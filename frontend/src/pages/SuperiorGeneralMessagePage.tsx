@@ -38,7 +38,7 @@ export function SuperiorGeneralMessagePage() {
             </div>
           </div>
           <figure className="superior-general-page__portrait">
-            <img src="/brand/congregation-superior-general.png" alt="Superior General of the Congregation of Jesus Mary Joseph" width={370} height={250} />
+            <img src="/brand/congregation-superior-general.webp" alt="Superior General of the Congregation of Jesus Mary Joseph" width={370} height={250} />
           </figure>
         </div>
       </section>

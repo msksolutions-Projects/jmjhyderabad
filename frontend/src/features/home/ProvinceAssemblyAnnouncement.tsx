@@ -2,9 +2,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 const DISMISSED_KEY = "jmj-province-assembly-2026-invitation-dismissed";
+/** The invitation pops up by itself only until the end of the Assembly day (IST). The ticker can still open it. */
+export const AUTO_OPEN_UNTIL = Date.parse("2026-10-31T23:59:59+05:30");
 const INVITATION = "/media/events/province-assembly-2026-invitation.png";
-const ANNOUNCEMENT =
-  "JMJ Hyderabad Province Joyfully Celebrates the Province Assembly 2026. Theme: “Rekindling Commitment & Revitalizing Mission” — 31 October 2026.";
 
 export function ProvinceAssemblyAnnouncement() {
   const [open, setOpen] = useState(false);
@@ -23,6 +23,7 @@ export function ProvinceAssemblyAnnouncement() {
 
   useEffect(() => {
     // Invite once per browser tab/session. The ticker can reopen it at any time.
+    if (Date.now() > AUTO_OPEN_UNTIL) return;
     try {
       if (!window.sessionStorage.getItem(DISMISSED_KEY)) setOpen(true);
     } catch {
@@ -70,7 +71,7 @@ export function ProvinceAssemblyAnnouncement() {
           type="button"
           className="assembly-ticker__open"
           onClick={() => setOpen(true)}
-          aria-label={`${ANNOUNCEMENT} Open invitation and programme`}
+          aria-label="31 October 2026 · Rekindling Commitment & Revitalizing Mission — open the Province Assembly 2026 invitation and programme"
           title="Click to view the invitation and programme"
         >
           <span className="assembly-ticker__message" aria-hidden="true">

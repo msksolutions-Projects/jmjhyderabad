@@ -39,7 +39,7 @@ export const founderReflections: Reflection[] = [];
 export const maryGlowrey: { summary: string; dates?: string; photo?: string } | null = {
   dates: "1887 – 1957 · Declared Venerable in 2025",
   // Authentic homepage portrait supplied by the official Congregation website.
-  photo: "/brand/congregation-mary-glowrey.png",
+  photo: "/brand/congregation-mary-glowrey.webp",
   summary:
     "Dr. Mary Glowrey, one of the first women doctors of Melbourne, arrived at St. Joseph's Convent, Guntur, in 1920 and became the first JMJ novice in India. As Sr. Mary of the Sacred Heart she served the sick for 36 years, founded what is now St. Joseph's Hospital and the Catholic Health Association of India.",
 };

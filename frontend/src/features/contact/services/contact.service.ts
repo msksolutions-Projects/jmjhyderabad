@@ -66,5 +66,9 @@ export async function sendContactMessage(values: ContactFormValues, honeypot?: s
     return { ok: true, reference: `JMJ-${Date.now().toString(36).toUpperCase()}` };
   }
   const { data } = await client.post<ContactResponse>("/contact", { ...values, hp_check: honeypot ?? "" });
+  // Never report success unless the API really confirmed it (e.g. a host returning an HTML page instead).
+  if (!data || typeof data !== "object" || data.ok !== true) {
+    throw new Error("We could not send your message. Please try again, or call the office directly.");
+  }
   return data;
 }

@@ -29,10 +29,12 @@ const bannerSrc = (n: string) => ({ src: `${B}/banner-${n}-sm.webp`, srcSet: `${
 
 /* ---------- Building blocks shared by the six cards ---------- */
 
-function ReadMore({ to, children = "Read More" }: { to: string; children?: ReactNode }) {
+/** "Read More" plus hidden context, so screen-reader and search users know where each link goes. */
+function ReadMore({ to, about, children = "Read More" }: { to: string; about?: string; children?: ReactNode }) {
   return (
     <Link to={to} className="read-more-anim">
-      {children} <span className="arrow" aria-hidden="true">→</span>
+      {children}
+      {about && <span className="visually-hidden"> about {about}</span>} <span className="arrow" aria-hidden="true">→</span>
     </Link>
   );
 }
@@ -88,7 +90,7 @@ function ReflectionBlock({ items, anchor }: { items: Reflection[]; anchor: strin
         <p className="reflection-date">{latest.month}</p>
       </div>
       <div className="link-box">
-        <ThemeButton to={`/reflections#${anchor}-0`}>Read More</ThemeButton>
+        <ThemeButton to={`/reflections#${anchor}-0`}>Read More<span className="visually-hidden"> of the monthly reflection</span></ThemeButton>
         <ThemeButton to="/reflections">View All</ThemeButton>
       </div>
     </>
@@ -99,10 +101,10 @@ function ReflectionBlock({ items, anchor }: { items: Reflection[]; anchor: strin
 
 function FounderCard() {
   return (
-    <CardBox title="Founder" className="reference-portrait" image={{ src: "/brand/congregation-founder.png", alt: "Portrait of Rev. Fr. Mathias Wolff S.J., founder of the Society of Jesus Mary Joseph" }}>
+    <CardBox title="Founder" className="reference-portrait" image={{ src: "/brand/congregation-founder.webp", alt: "Portrait of Rev. Fr. Mathias Wolff S.J., founder of the Society of Jesus Mary Joseph" }}>
       <p>
         Rev. Fr. Mathias Wolff S.J. (1779–1857) founded the Society of Jesus Mary Joseph in Amersfoort, Netherlands, in
-        1822, for the liberation of the oppressed, the poor, the voiceless and the marginalized. <ReadMore to="/who-we-are/founder" />
+        1822, for the liberation of the oppressed, the poor, the voiceless and the marginalized. <ReadMore to="/who-we-are/founder" about="our Founder" />
       </p>
       {founderReflections.length ? (
         <ReflectionBlock items={founderReflections} anchor="founder" />
@@ -123,7 +125,7 @@ function SecondCard() {
     return (
       <CardBox title="Ven. Mary Glowrey" className="reference-portrait" image={maryGlowrey.photo ? { src: maryGlowrey.photo, alt: "Ven. Mary Glowrey in the white JMJ habit" } : undefined}>
         <p>
-          {maryGlowrey.summary} {hasSection("mary-glowrey-life") && <ReadMore to="/mary-glowrey/life" />}
+          {maryGlowrey.summary} {hasSection("mary-glowrey-life") && <ReadMore to="/mary-glowrey/life" about="Ven. Mary Glowrey" />}
         </p>
         <ReflectionBlock items={glowreyReflections} anchor="glowrey" />
       </CardBox>
@@ -133,7 +135,7 @@ function SecondCard() {
     <CardBox title="Our Charism" image={{ ...bannerSrc("04"), alt: "Painting of the Holy Family — Jesus, Mary and Joseph — in the carpenter's workshop" }}>
       <p>
         In total surrender to the Will of the Father, with passion for God&rsquo;s Kingdom, like Mary and Joseph, we
-        follow Christ the Saviour to liberate oppressed humanity through the ministries of mercy. <ReadMore to="/who-we-are/vision-mission" />
+        follow Christ the Saviour to liberate oppressed humanity through the ministries of mercy. <ReadMore to="/who-we-are/vision-mission" about="our vision and mission" />
       </p>
       <div className="reflection-block">
         <h4>An Ever-Adaptable Apostolic Availability</h4>
@@ -146,10 +148,10 @@ function SecondCard() {
 /** Congregation leadership is distinct from the Province's Provincial Superior. */
 function ThirdCard() {
   return (
-    <CardBox title="Message from Superior General" className="reference-portrait" image={{ src: "/brand/congregation-superior-general.png", alt: "Portrait of the Superior General of the Congregation of Jesus Mary Joseph in a blue religious habit" }}>
+    <CardBox title="Message from Superior General" className="reference-portrait" image={{ src: "/brand/congregation-superior-general.webp", alt: "Portrait of the Superior General of the Congregation of Jesus Mary Joseph in a blue religious habit" }}>
       <p>
         The Superior General welcomes visitors on behalf of the Congregation of Jesus Mary Joseph,
-        drawing inspiration from the life of Jesus and the Founder's charism of apostolic availability. <ReadMore to="/message-from-superior-general" />
+        drawing inspiration from the life of Jesus and the Founder's charism of apostolic availability. <ReadMore to="/message-from-superior-general" about="the message from the Superior General" />
       </p>
       <div className="link-box"><ThemeButton to="/province/provincial-message">Message from Our Provincial Superior</ThemeButton></div>
     </CardBox>
@@ -180,7 +182,7 @@ function FourthCard() {
     <CardBox title="Joining Us" image={{ ...bannerSrc("07"), alt: "Sisters gathered before the altar at a profession celebration" }}>
       <p>
         A person-oriented, contextualised and integral journey into the likeness of Christ — from pre-postulancy and
-        postulancy, through the novitiate, to the juniorate and final profession. <ReadMore to="/ministries/formation" />
+        postulancy, through the novitiate, to the juniorate and final profession. <ReadMore to="/ministries/formation" about="formation and joining us" />
       </p>
       <div className="link-box">
         <ThemeButton to="/ministries/formation">Stages of Formation</ThemeButton>
@@ -327,7 +329,7 @@ export function HomePage() {
             The Congregation of Jesus Mary Joseph is a Catholic religious congregation of women founded by Rev. Fr.
             Mathias Wolff S.J. in 1822. Serving in India since 1904, the Hyderabad Province carries this mission through
             schools, hospitals, nursing colleges, social service societies and formation houses across Telangana, Andhra
-            Pradesh and Madhya Pradesh. <ReadMore to="/who-we-are/province-profile" />
+            Pradesh and Madhya Pradesh. <ReadMore to="/who-we-are/province-profile" about="the Hyderabad Province" />
           </p>
         </div>
       </section>

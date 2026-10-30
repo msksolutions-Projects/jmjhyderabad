@@ -853,13 +853,24 @@ a.stat:hover { border-color: var(--sky-500); transform: translateY(-2px); }
 /* ==========================================================================
    Home photo carousel — full-bleed photographs, no blue letterbox panels
    ========================================================================== */
-.hero-gallery { position: relative; width: 100%; overflow: hidden; background: #f8fafc; }
-.hero-gallery__stage { position: relative; width: 100%; height: clamp(270px, 46vw, 720px); overflow: hidden; background: #f8fafc; }
-@media (max-width: 599px) { .hero-gallery__stage { height: clamp(235px, 65vw, 380px); } }
-.hero-gallery__slide { position: absolute; inset: 0; margin: 0; opacity: 0; visibility: hidden; transition: opacity 0.9s var(--ease), visibility 0.9s; }
+.hero-gallery { position: relative; width: 100%; overflow: hidden; background: #0d2a4a; }
+/* Banner size per device: a steady shape on phones/tablets, and on desktops never taller
+   than the screen space left under the header, so the whole photo is seen without scrolling. */
+.hero-gallery__stage {
+  position: relative; width: 100%; overflow: hidden; background: #0d2a4a;
+  aspect-ratio: 4 / 3; max-height: 72vh; max-height: 72svh;
+}
+@media (min-width: 600px) { .hero-gallery__stage { aspect-ratio: 16 / 9; max-height: calc(100vh - 230px); max-height: calc(100svh - 230px); min-height: 340px; } }
+@media (min-width: 1024px) { .hero-gallery__stage { aspect-ratio: 11 / 5; max-height: min(760px, calc(100vh - 250px)); max-height: min(760px, calc(100svh - 250px)); min-height: 400px; } }
+@media (min-width: 600px) and (orientation: landscape) and (max-height: 560px) { .hero-gallery__stage { min-height: 260px; max-height: calc(100vh - 120px); } }
+.hero-gallery__slide { position: absolute; inset: 0; margin: 0; opacity: 0; visibility: hidden; transition: opacity 0.9s var(--ease), visibility 0.9s; overflow: hidden; }
 .hero-gallery__slide.is-active { opacity: 1; visibility: visible; }
-.hero-gallery__photo { position: relative; z-index: 1; display: block; width: 100%; height: 100%; object-fit: cover; }
+.hero-gallery__photo { position: relative; z-index: 1; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+.hero-gallery__slide--contain .hero-gallery__photo { object-fit: contain; object-position: 50% 50%; filter: drop-shadow(0 10px 30px rgba(0,0,0,.35)); }
+/* Soft, blurred copy of the same photo behind a photo that is shown whole — no flat coloured side panels. */
+.hero-gallery__backdrop { position: absolute; inset: -6%; z-index: 0; width: 112%; height: 112%; object-fit: cover; filter: blur(28px) saturate(1.15) brightness(.72); transform: translateZ(0); }
 .hero-gallery__slide.is-active .hero-gallery__photo { animation: none; }
+@media (prefers-reduced-motion: reduce) { .hero-gallery__slide { transition: none; } }
 
 .hero-gallery__controls { position: absolute; z-index: 3; inset: 0; pointer-events: none; }
 .hero-gallery__controls button { pointer-events: auto; }
@@ -884,7 +895,15 @@ a.stat:hover { border-color: var(--sky-500); transform: translateY(-2px); }
 .hero-gallery__count { font-size: 0.8rem; font-variant-numeric: tabular-nums; min-width: 44px; text-align: center; }
 .hero-gallery__play { width: 34px; height: 34px; border-radius: 999px; border: 1px solid rgba(8, 37, 70, .2); background: #fff; color: var(--navy-800); display: grid; place-items: center; }
 .hero-gallery__play svg { width: 16px; height: 16px; }
-@media (max-width: 420px) { .hero-gallery__dot { width: 22px; } .hero-gallery__count { display: none; } }
+/* Phones: 13 dots would wrap over the photo, so show a compact "3 / 13" counter instead (swipe or arrows to move). */
+@media (max-width: 599px) {
+  .hero-gallery__bar { left: auto; right: 10px; bottom: 10px; transform: none; gap: 6px; padding: 4px 4px 4px 12px; }
+  .hero-gallery__dots { display: none; }
+  .hero-gallery__count { display: inline; min-width: 0; font-weight: 600; }
+  .hero-gallery__play { width: 32px; height: 32px; }
+  .hero-gallery__arrow { opacity: .78; }
+}
+@media (min-width: 600px) and (max-width: 899px) { .hero-gallery__dot { width: 20px; } .hero-gallery__dots { flex-wrap: nowrap; } }
 
 /* Province Assembly 2026 — a readable, responsive announcement and invitation popup. */
 .assembly-ticker {
@@ -966,7 +985,9 @@ body.assembly-modal-open { overflow: hidden; }
   display: flex;
   flex-direction: column;
   width: min(820px, 100%);
-  max-height: calc(100dvh - 28px);
+  height: calc(100vh - 28px);
+  height: calc(100dvh - 28px);
+  max-height: 1240px;
   overflow: hidden;
   border-radius: 12px;
   background: #fff;
@@ -1002,6 +1023,7 @@ body.assembly-modal-open { overflow: hidden; }
 .assembly-dialog__tabs button[aria-selected="true"] { background: var(--navy-700); color: #fff; border-color: var(--navy-700); }
 .assembly-dialog__pages {
   display: flex;
+  flex: 1 1 0;
   align-items: center;
   justify-content: center;
   min-height: 0;
@@ -1011,11 +1033,13 @@ body.assembly-modal-open { overflow: hidden; }
   overscroll-behavior: contain;
 }
 .assembly-dialog__pages img {
+  /* Fixed box before the image arrives, so the dialog never jumps (layout shift). */
   display: block;
+  aspect-ratio: 3 / 4;
   width: auto;
   max-width: 100%;
-  height: auto;
-  max-height: calc(100dvh - 235px);
+  height: 100%;
+  max-height: 1024px;
   object-fit: contain;
   background: #fff;
   box-shadow: 0 5px 22px rgba(8, 37, 70, 0.18);
@@ -1060,13 +1084,13 @@ body.assembly-modal-open { overflow: hidden; }
   .assembly-ticker__message { white-space: normal; overflow: visible; font-size: .81rem; line-height: 1.55; }
   .assembly-ticker__view { grid-area: action; padding: 8px 14px; font-size: .77rem; }
   .assembly-overlay { padding: 8px; align-items: stretch; }
-  .assembly-dialog { max-height: calc(100dvh - 16px); margin: auto; }
+  .assembly-dialog { height: calc(100dvh - 16px); max-height: none; margin: auto; }
   .assembly-dialog__header { padding: 10px 13px; }
   .assembly-dialog__header p { font-size: 0.78rem; }
   .assembly-dialog__tabs { padding: 7px; gap: 6px; }
   .assembly-dialog__tabs button { font-size: 0.8rem; }
   .assembly-dialog__pages { padding: 8px; }
-  .assembly-dialog__pages img { max-height: calc(100dvh - 220px); }
+  .assembly-dialog__pages img { height: 100%; }
   .assembly-dialog__footer { padding: 9px 12px; }
   .assembly-dialog__footer a { font-size: 0.77rem; }
   .assembly-dialog__footer button { padding-inline: 10px; font-size: 0.8rem; }

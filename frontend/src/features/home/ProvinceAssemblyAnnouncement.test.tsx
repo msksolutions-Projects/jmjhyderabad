@@ -1,11 +1,24 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { ProvinceAssemblyAnnouncement } from "./ProvinceAssemblyAnnouncement";
+import { AUTO_OPEN_UNTIL, ProvinceAssemblyAnnouncement } from "./ProvinceAssemblyAnnouncement";
 import { slides } from "./slides";
 
 describe("Province Assembly announcement", () => {
-  beforeEach(() => window.sessionStorage.clear());
+  beforeEach(() => {
+    window.sessionStorage.clear();
+    vi.spyOn(Date, "now").mockReturnValue(Date.parse("2026-10-30T10:00:00+05:30"));
+  });
+  afterEach(() => vi.restoreAllMocks());
+
+  it("stops popping up by itself after the Assembly day but can still be opened", async () => {
+    vi.spyOn(Date, "now").mockReturnValue(AUTO_OPEN_UNTIL + 1000);
+    const user = userEvent.setup();
+    render(<ProvinceAssemblyAnnouncement />);
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: /view invitation/i }));
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
+  });
 
   it("shows the invitation first and allows switching to the programme", async () => {
     const user = userEvent.setup();
@@ -29,7 +42,7 @@ describe("Province Assembly announcement", () => {
 
   it("presents one readable announcement without overlapping scrolling duplicates", () => {
     render(<ProvinceAssemblyAnnouncement />);
-    expect(screen.getByRole("button", { name: /Rekindling Commitment & Revitalizing Mission.*31 October 2026/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /31 October 2026.*Rekindling Commitment & Revitalizing Mission.*invitation/i })).toBeInTheDocument();
     const ticker = screen.getByRole("complementary", { name: /province assembly 2026 announcement/i });
     expect(ticker.querySelectorAll(".assembly-ticker__message")).toHaveLength(1);
     expect(ticker.querySelectorAll(".assembly-ticker__moving")).toHaveLength(0);
