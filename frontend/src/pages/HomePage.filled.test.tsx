@@ -23,11 +23,9 @@ import { HomePage } from "./HomePage";
 describe("HomePage with the content document filled in", () => {
   it("shows every new section", () => {
     renderWithProviders(<HomePage />);
-    expect(screen.getByRole("heading", { name: "Message from the Provincial Superior" })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /meet our province teams/i })).toHaveAttribute("href", "/province/teams");
-    expect(screen.getByText("Quote of the Day")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Message from Superior General" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /message from our provincial superior/i })).toHaveAttribute("href", "/province/provincial-message");
     expect(screen.getByRole("heading", { name: "Loving Tribute" })).toBeInTheDocument();
-    expect(screen.getByText(/love one another/i)).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Ven. Mary Glowrey" })).toBeInTheDocument();
     expect(screen.getAllByText("Monthly Reflection")).toHaveLength(2);
     expect(screen.getByText("Sr. Example Tribute")).toBeInTheDocument();

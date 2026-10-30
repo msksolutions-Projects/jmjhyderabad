@@ -15,7 +15,6 @@ import {
   founderReflections,
   glowreyReflections,
   maryGlowrey,
-  quoteForDay,
   tributes,
   type Reflection,
 } from "@/data/homeFeatures";
@@ -144,21 +143,15 @@ function SecondCard() {
   );
 }
 
-/** The Province's welcome card leads to its own Superior's message, not a different website. */
+/** Congregation leadership is distinct from the Province's Provincial Superior. */
 function ThirdCard() {
-  const quote = quoteForDay();
   return (
-    <CardBox title="Message from the Provincial Superior" className="reference-portrait provincial-home-card" image={{ src: "/media/provincial-council/sr-pauline-nusi.png", alt: "Sr. Pauline Nusi, Provincial Superior of JMJ Hyderabad Province" }}>
+    <CardBox title="Message from Superior General" className="reference-portrait" image={{ src: "/brand/congregation-superior-general.png", alt: "Portrait of the Superior General of the Congregation of Jesus Mary Joseph in a blue religious habit" }}>
       <p>
-        Sr. Pauline Nusi welcomes you to JMJ Hyderabad Province and shares a message of gratitude,
-        faith and compassionate service. <ReadMore to="/province/provincial-message" />
+        The Superior General welcomes visitors on behalf of the Congregation of Jesus Mary Joseph,
+        drawing inspiration from the life of Jesus and the Founder's charism of apostolic availability. <ReadMore to="/message-from-superior-general" />
       </p>
-      <div className="reflection-block">
-        <h4>{quote ? "Quote of the Day" : "Words to live by"}</h4>
-        <p className="reflection-quote">“{quote ? quote.text : "An Ever Adaptable Apostolic Availability"}”</p>
-        <p className="reflection-date">— {quote ? quote.author ?? "" : "JMJ Charism"}</p>
-      </div>
-      <div className="link-box"><ThemeButton to="/province/teams">Meet Our Province Teams</ThemeButton></div>
+      <div className="link-box"><ThemeButton to="/province/provincial-message">Message from Our Provincial Superior</ThemeButton></div>
     </CardBox>
   );
 }
@@ -321,11 +314,9 @@ export function HomePage() {
 
       <ProvinceAssemblyAnnouncement />
 
-      {/* Banner (boxed, photos only) */}
+      {/* Full-width photo banner — no empty coloured side panels. */}
       <section className="hero-carousel-section">
-        <div className="container">
-          <HeroSlider />
-        </div>
+        <HeroSlider />
       </section>
 
       {/* Welcome (on the reference this sits on the banner; here it stays off the photos) */}

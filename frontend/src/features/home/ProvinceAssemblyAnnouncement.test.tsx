@@ -38,11 +38,11 @@ describe("Province Assembly announcement", () => {
 });
 
 describe("Homepage banner order", () => {
-  it("shows all 13 supplied photos in numbered order without cropping", () => {
+  it("shows all 13 supplied photos in numbered order with full-width backgrounds", () => {
     expect(slides).toHaveLength(13);
     expect(slides.map((slide) => slide.base)).toEqual(
       Array.from({ length: 13 }, (_, i) => `/media/assembly-banners/assembly-${String(i + 1).padStart(2, "0")}`),
     );
-    expect(slides.every((slide) => slide.fit === "contain")).toBe(true);
+    expect(slides.every((slide) => slide.fit !== "contain")).toBe(true);
   });
 });

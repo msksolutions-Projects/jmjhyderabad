@@ -28,6 +28,7 @@ const ReflectionsPage = named(() => import("@/pages/ReflectionsPage"), "Reflecti
 const ProvincialCouncilPage = named(() => import("@/pages/ProvincialCouncilPage"), "ProvincialCouncilPage");
 const ProvinceTeamsPage = named(() => import("@/pages/ProvinceTeamsPage"), "ProvinceTeamsPage");
 const ProvincialMessagePage = named(() => import("@/pages/ProvincialMessagePage"), "ProvincialMessagePage");
+const SuperiorGeneralMessagePage = named(() => import("@/pages/SuperiorGeneralMessagePage"), "SuperiorGeneralMessagePage");
 const PreparingPage = named(() => import("@/pages/PreparingPage"), "PreparingPage");
 const JubileeVibesPage = named(() => import("@/pages/NewsFlashPage"), "JubileeVibesPage");
 const NewsFlashListPage = named(() => import("@/pages/NewsFlashPage"), "NewsFlashListPage");
@@ -99,6 +100,7 @@ export const router = createBrowserRouter([
       // Pages added from the Province's content document
       { path: "mission/jmj-subodha-centre", element: later("jmj-subodha-centre") },
       { path: "province/provincial-message", element: wrap(<ProvincialMessagePage />) },
+      { path: "message-from-superior-general", element: wrap(<SuperiorGeneralMessagePage />) },
       { path: "province/teams", element: wrap(<ProvinceTeamsPage />) },
       { path: "province/provincial-chapter-2023", element: later("provincial-chapter-2023") },
       { path: "province/provincial-council", element: wrap(<ProvincialCouncilPage />) },

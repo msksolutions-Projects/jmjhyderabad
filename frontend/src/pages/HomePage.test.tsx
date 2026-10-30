@@ -41,7 +41,7 @@ describe("HomePage", () => {
 
   it("follows the reference site's home sections, in order", () => {
     renderWithProviders(<HomePage />);
-    const order = [/^welcome to the congregation/i, /^founder$/i, /^ven\. mary glowrey$/i, /^message from the provincial superior$/i, /^joining us$/i, /^news strings$/i, /^latest news$/i, /^our presence$/i, /^photo gallery$/i];
+    const order = [/^welcome to the congregation/i, /^founder$/i, /^ven\. mary glowrey$/i, /^message from superior general$/i, /^joining us$/i, /^news strings$/i, /^latest news$/i, /^our presence$/i, /^photo gallery$/i];
     const headings = screen.getAllByRole("heading").map((h) => h.textContent ?? "");
     let last = -1;
     for (const name of order) {
@@ -61,19 +61,22 @@ describe("HomePage", () => {
     expect(within(table).getByRole("rowheader", { name: /total/i })).toHaveTextContent("25 communities");
   });
 
-  it("links the local Provincial Superior message rather than sending visitors to the Congregation's site", () => {
+  it("shows the three supplied Congregation portraits and uses local message links", () => {
     renderWithProviders(<HomePage />);
-    expect(screen.getByRole("heading", { name: /message from the provincial superior/i })).toBeInTheDocument();
-    const messageCard = screen.getByRole("heading", { name: /message from the provincial superior/i }).closest("article")!;
-    expect(within(messageCard).getByRole("link", { name: /read more/i })).toHaveAttribute("href", "/province/provincial-message");
-    expect(within(messageCard).getByRole("link", { name: /meet our province teams/i })).toHaveAttribute("href", "/province/teams");
+    expect(screen.getByRole("heading", { name: /message from superior general/i })).toBeInTheDocument();
+    const messageCard = screen.getByRole("heading", { name: /message from superior general/i }).closest("article")!;
+    expect(within(messageCard).getByRole("link", { name: /read more/i })).toHaveAttribute("href", "/message-from-superior-general");
+    expect(within(messageCard).getByRole("link", { name: /message from our provincial superior/i })).toHaveAttribute("href", "/province/provincial-message");
     const portraits = [
       "/brand/congregation-founder.png",
       "/brand/congregation-mary-glowrey.png",
-      "/media/provincial-council/sr-pauline-nusi.png",
+      "/brand/congregation-superior-general.png",
     ];
     const sources = screen.getAllByRole("img").map((img) => img.getAttribute("src"));
     for (const src of portraits) expect(sources).toContain(src);
+    const gallery = screen.getByRole("region", { name: /province photographs/i });
+    expect(gallery.parentElement).toHaveClass("hero-carousel-section");
+    expect(gallery.querySelector(".hero-gallery__slide--contain")).toBeNull();
     for (const name of [/loving tribute/i, /quote of the day/i]) {
       expect(screen.queryByText(name)).not.toBeInTheDocument();
     }
