@@ -36,7 +36,7 @@ export const slides: Slide[] = [
   { base: `${P}/assembly-08`, alt: "A JMJ Sister cutting a ceremonial ribbon with clergy and guests", width: 1280, height: 720, focus: "50% 30%" },
   { base: `${P}/assembly-09`, alt: "JMJ Sisters and priests in a group photograph in front of the altar", width: 1600, height: 1066, focus: "50% 30%" },
   { base: `${P}/assembly-10`, alt: "JMJ Sisters lighting ceremonial lamps", width: 1600, height: 1066, focus: "50% 45%" },
-  { base: `${P}/assembly-11`, alt: "JMJ Sisters processing outdoors, led by a sister carrying a staff", width: 1500, height: 1000, focus: "50% 45%" },
+  { base: `${P}/assembly-11`, alt: "JMJ Sisters processing outdoors, led by a sister carrying a staff", width: 1500, height: 1000, focus: "50% 15%" },
   { base: `${P}/assembly-12`, alt: "Four senior JMJ Sisters wearing white habits and orange saris", width: 1536, height: 1024, focus: "50% 10%" },
   { base: `${P}/assembly-13`, alt: "Four JMJ Sisters together, in white habits and an orange sari", width: 1536, height: 1024, focus: "50% 8%" },
 ];

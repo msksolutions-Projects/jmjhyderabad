@@ -11,6 +11,8 @@ ROOT = Path(__file__).resolve().parent.parent
 SOURCE = json.loads((ROOT / "tools" / "drive_inventory.json").read_text())
 GALLERY = json.loads((ROOT / "public" / "data" / "gallery.json").read_text())
 PUBLIC = ROOT / "public"
+# Folders added from local uploads (not in the Drive inventory). Count = photos in each.
+LOCAL_FOLDERS = {"jmj-subodha": 27, "senior-sisters-day-2025": 78, "jubilee-2025": 44, "pc-installation": 40, "jubilee-2024": 27}
 
 expected = {
     f"{folder['slug']}-{file['id']}"
@@ -18,14 +20,18 @@ expected = {
     for file in folder["files"]
     if file["mimeType"].startswith("image/")
 }
-actual = [photo["id"] for photo in GALLERY["images"]]
+actual = [photo["id"] for photo in GALLERY["images"] if photo["category"] not in LOCAL_FOLDERS]
 assert len(expected) == len(actual), f"Expected {len(expected)} photos; manifest contains {len(actual)}"
 assert set(actual) == expected, "Missing or unapproved file IDs in gallery manifest"
 assert len(actual) == len(set(actual)), "Duplicate photo IDs in manifest"
 
 counts = Counter(photo["category"] for photo in GALLERY["images"])
-assert len(GALLERY["categories"]) == len(SOURCE) == 12
-for source_folder, category in zip(SOURCE, GALLERY["categories"]):
+drive_categories = [c for c in GALLERY["categories"] if c["id"] not in LOCAL_FOLDERS]
+assert len(drive_categories) == len(SOURCE) == 12
+for slug, count in LOCAL_FOLDERS.items():
+    category = next(c for c in GALLERY["categories"] if c["id"] == slug)
+    assert category["count"] == counts[slug] == count, f"Local folder {slug}: expected {count} photos"
+for source_folder, category in zip(SOURCE, drive_categories):
     assert category["id"] == source_folder["slug"]
     assert category["count"] == counts[category["id"]] == source_folder["imageCount"]
 
@@ -53,6 +59,7 @@ assert not list((PUBLIC / "brand").glob("*.webp")), "Old branded photographs rem
 source_bytes = sum(int(file["size"]) for folder in SOURCE for file in folder["files"] if file["mimeType"].startswith("image/"))
 optimized_bytes = sum(path.stat().st_size for path in variants)
 photos_per_folder = ", ".join(f"{folder['slug']}: {folder['imageCount']}" for folder in SOURCE)
+print(f"LOCAL folders: {LOCAL_FOLDERS}")
 print(f"VERIFIED {len(actual)} of {len(expected)} photos, {len(GALLERY['categories'])} filters, {len(variants)} valid WebP assets")
 print(photos_per_folder)
 print(f"Original total: {source_bytes / 1048576:.1f} MiB")

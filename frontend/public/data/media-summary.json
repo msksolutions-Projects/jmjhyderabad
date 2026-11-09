@@ -2,13 +2,18 @@
   "source": "12 client-approved, publicly shared Google Drive folders",
   "importedPhotographs": 484,
   "uniquePhotographs": 484,
-  "filters": 12,
+  "filters": 17,
   "nestedAspirancyFolders": 2,
   "videosNotIncludedInPhotoGallery": 3,
   "imageFormat": "webp",
   "imageVariantsPerPhotograph": 2,
   "originalPhotoBytes": 1537125362,
   "categories": {
+    "jmj-subodha": 27,
+    "senior-sisters-day-2025": 78,
+    "jubilee-2025": 44,
+    "pc-installation": 40,
+    "jubilee-2024": 27,
     "postulency": 2,
     "novices": 3,
     "aspirancy": 12,
@@ -21,5 +26,12 @@
     "thanksgiving-pc": 74,
     "youth-fest-2025": 11,
     "assessment-teams": 63
+  },
+  "localFolders": {
+    "jmj-subodha": "JMJ Subodha Centre inauguration \u2014 27 images",
+    "senior-sisters-day-2025": "Senior Sisters' Day 27.10.2025 \u2014 78 photos (1 duplicate and 1 video left out)",
+    "jubilee-2025": "Jubilee 2025 \u2014 44 photos",
+    "pc-installation": "PC Installation (Nov 2024) \u2014 40 photos",
+    "jubilee-2024": "Jubilee 2024 \u2014 27 photos"
   }
 }

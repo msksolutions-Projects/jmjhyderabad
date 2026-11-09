@@ -853,15 +853,12 @@ a.stat:hover { border-color: var(--sky-500); transform: translateY(-2px); }
 /* ==========================================================================
    Home photo carousel — full-bleed photographs, no blue letterbox panels
    ========================================================================== */
-.hero-gallery { position: relative; width: 100%; overflow: hidden; background: #f8fafc; }
-/* Banner size per device: a steady shape on phones/tablets, and on desktops never taller
-   than the screen space left under the header, so the whole photo is seen without scrolling. */
 .hero-gallery__stage {
   position: relative; width: 100%; overflow: hidden; background: #f8fafc;
-  aspect-ratio: 4 / 3; max-height: 72vh; max-height: 72svh;
+  aspect-ratio: 3 / 2; max-height: 80vh; max-height: 80svh;
 }
-@media (min-width: 600px) { .hero-gallery__stage { aspect-ratio: 16 / 9; max-height: calc(100vh - 230px); max-height: calc(100svh - 230px); min-height: 340px; } }
-@media (min-width: 1024px) { .hero-gallery__stage { aspect-ratio: 11 / 5; max-height: min(760px, calc(100vh - 250px)); max-height: min(760px, calc(100svh - 250px)); min-height: 400px; } }
+@media (min-width: 600px) { .hero-gallery__stage { aspect-ratio: 3 / 2; max-height: calc(100vh - 150px); max-height: calc(100svh - 150px); min-height: 340px; } }
+@media (min-width: 1024px) { .hero-gallery__stage { aspect-ratio: 16 / 9; max-height: min(860px, calc(100vh - 150px)); max-height: min(860px, calc(100svh - 150px)); min-height: 480px; } }
 @media (min-width: 600px) and (orientation: landscape) and (max-height: 560px) { .hero-gallery__stage { min-height: 260px; max-height: calc(100vh - 120px); } }
 .hero-gallery__slide { position: absolute; inset: 0; margin: 0; opacity: 0; visibility: hidden; transition: opacity 0.9s var(--ease), visibility 0.9s; overflow: hidden; }
 .hero-gallery__slide.is-active { opacity: 1; visibility: visible; }
@@ -1578,6 +1575,14 @@ body.assembly-modal-open { overflow: hidden; }
 .province-team-card__action span { color: #e6cf94; font-size: 1.1rem; }
 .province-team-card:hover .province-team-card__action,
 .province-team-card:focus-within .province-team-card__action { background: #20649b; }
+/* Province Committees image (Province Teams page, below the portraits) */
+.province-committees__image {
+  display: block; overflow: hidden; border-radius: 18px; background: #fff;
+  border: 1px solid #d3e3f2; box-shadow: 0 14px 38px rgba(8, 37, 70, 0.10);
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+.province-committees__image:hover { transform: translateY(-2px); box-shadow: 0 18px 46px rgba(8, 37, 70, 0.16); }
+.province-committees__image img { display: block; width: 100%; height: auto; }
 .province-teams-links {
   margin-top: 64px; padding: clamp(24px, 4vw, 43px); display: flex;
   align-items: center; justify-content: space-between; gap: 24px;

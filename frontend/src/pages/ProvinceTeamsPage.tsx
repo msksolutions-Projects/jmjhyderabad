@@ -41,6 +41,28 @@ export function ProvinceTeamsPage() {
             <ProvinceTeamGallery />
           </section>
 
+          <section className="province-committees" aria-labelledby="province-committees-title">
+            <div className="province-teams-heading">
+              <div>
+                <p className="province-teams-heading__kicker">SERVING TOGETHER</p>
+                <h2 id="province-committees-title">Province Committees</h2>
+              </div>
+              <p>The Sisters serving on each committee of the Province. Select the image to view it in full size.</p>
+            </div>
+            <a className="province-committees__image" href="/media/provincial/province-committees.webp" target="_blank" rel="noopener noreferrer">
+              <img
+                src="/media/provincial/province-committees.webp"
+                srcSet="/media/provincial/province-committees-md.webp 900w, /media/provincial/province-committees.webp 1536w"
+                sizes="(min-width: 1300px) 1240px, 100vw"
+                width={1536}
+                height={1024}
+                loading="lazy"
+                decoding="async"
+                alt="Province committees and their members: Education, Finance, Social Apostolate, Pastoral and Evangelisation, PMJC, Health Care, Formation, Spiritual Animation, Vocation Facilitation and Safeguarding"
+              />
+            </a>
+          </section>
+
           <div className="province-teams-links">
             <div>
               <h2>Serving together in mission</h2>
