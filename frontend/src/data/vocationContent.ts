@@ -111,7 +111,7 @@ ${vocationDirectory}
 
 Read about the [five stages of formation](/ministries/formation), or [send an enquiry to the Hyderabad Provincialate](/contact).
 
-*Information and contact directory adapted from [Becoming a JMJ Nun — Congregation of Jesus Mary Joseph](https://congregationjmj.org/becoming-a-jmj-nun). Contact assignments may change; please check with the relevant Province before travelling.*`;
+*Contact assignments may change; please check with the relevant Province before travelling.*`;
 
 export const whomToContactPage = `The Sisters welcome vocation enquiries from women considering life in the Congregation of Jesus Mary Joseph. Please contact the promoter for your region. For general enquiries unrelated to vocations, the Congregation's Generalate can be reached at [cjmjroma@gmail.com](mailto:cjmjroma@gmail.com); for Hyderabad Province matters, use the [Provincialate contact form](/contact).
 
@@ -125,7 +125,7 @@ A vocation promoter can arrange a conversation, explain the Congregation's life 
 
 Learn more about [Becoming A JMJ Nun](/joining-us/becoming-a-jmj-sister) and [Stages of Formation](/ministries/formation).
 
-*Directory based on the Congregation's [Becoming a JMJ Nun](https://congregationjmj.org/becoming-a-jmj-nun) listing, checked 30 October 2026. The separate [Whom do I contact?](https://congregationjmj.org/whom-do-i-contact) page appears to contain older assignments; confirm current details with the Congregation.*`;
+*Contact assignments may change; please confirm current details with the relevant Province.*`;
 
 export const formationPage = `JMJ formation is a lifelong process of learning to follow Christ as a religious missionary. The Congregation identifies five stages: **Aspirancy, Pre-novitiate, Novitiate, Temporary Profession and Ongoing Formation**. Each stage combines discernment with human, spiritual, communal and apostolic growth.
 
@@ -174,6 +174,4 @@ Formation continues after perpetual profession and throughout a Sister's life. C
 
 ## Enquire about joining
 
-Read [Becoming A JMJ Nun](/joining-us/becoming-a-jmj-sister) or consult the [vocation contacts](/joining-us/whom-to-contact).
-
-*Detailed editorial adaptation of [Stages of Formation — Congregation of Jesus Mary Joseph](https://congregationjmj.org/stages-of-formation). The Hyderabad Province's earlier content document uses additional local terms such as pre-postulancy, postulancy and juniorate.*`;
+Read [Becoming A JMJ Nun](/joining-us/becoming-a-jmj-sister) or consult the [vocation contacts](/joining-us/whom-to-contact).`;

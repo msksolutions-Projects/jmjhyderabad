@@ -102,7 +102,6 @@ export const router = createBrowserRouter([
       { path: "province/provincial-message", element: wrap(<ProvincialMessagePage />) },
       { path: "message-from-superior-general", element: wrap(<SuperiorGeneralMessagePage />) },
       { path: "province/teams", element: wrap(<ProvinceTeamsPage />) },
-      { path: "province/provincial-chapter-2023", element: later("provincial-chapter-2023") },
       { path: "province/provincial-council", element: wrap(<ProvincialCouncilPage />) },
       { path: "news-flash", element: wrap(<NewsFlashListPage />) },
       { path: "news-flash/jubilee-vibes", element: wrap(<JubileeVibesPage />) },

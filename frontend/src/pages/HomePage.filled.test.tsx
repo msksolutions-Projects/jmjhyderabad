@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { screen } from "@testing-library/react";
+import { screen, within } from "@testing-library/react";
 import { renderWithProviders } from "@/test/utils";
 import type * as Features from "@/data/homeFeatures";
 
@@ -23,8 +23,9 @@ import { HomePage } from "./HomePage";
 describe("HomePage with the content document filled in", () => {
   it("shows every new section", () => {
     renderWithProviders(<HomePage />);
-    expect(screen.getByRole("heading", { name: "Message from Superior General" })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /message from our provincial superior/i })).toHaveAttribute("href", "/province/provincial-message");
+    expect(screen.getByRole("heading", { name: "Message from Provincial Superior" })).toBeInTheDocument();
+    const messageCard = screen.getByRole("heading", { name: "Message from Provincial Superior" }).closest("article")!;
+    expect(within(messageCard).getByRole("link", { name: /read more/i })).toHaveAttribute("href", "/province/provincial-message");
     expect(screen.getByRole("heading", { name: "Loving Tribute" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Ven. Mary Glowrey" })).toBeInTheDocument();
     expect(screen.getAllByText("Monthly Reflection")).toHaveLength(2);

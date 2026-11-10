@@ -13,8 +13,6 @@ The Congregation describes five connected stages in becoming and remaining a JMJ
 3. **Novitiate:** Two years of more intensive prayer, community life, study and apostolic formation in preparation for commitment.
 4. **Temporary profession:** The Sister makes vows for a defined period and continues human, spiritual and apostolic development on the path towards perpetual profession.
 5. **Ongoing formation:** Formation continues throughout consecrated life, helping Sisters respond faithfully to new circumstances and the needs of those they serve.
-
-*Source: [Stages of Formation — Congregation of Jesus Mary Joseph](https://congregationjmj.org/stages-of-formation).*
 `,
   education: `## The education apostolate across the Congregation
 
@@ -27,8 +25,6 @@ The Congregation began by responding to the need for girls' education. Today its
 - Integrated educational services for children with disabilities.
 
 In Hyderabad Province, the [institutions directory](/institutions) presents the local schools and centres. The categories above describe the wider Congregation, not a claim that every type is available at every Province institution.
-
-*Source: [Education — Congregation of Jesus Mary Joseph](https://congregationjmj.org/education).*
 `,
   "health-care": `## The wider JMJ healing ministry
 
@@ -42,8 +38,6 @@ Inspired especially by the example of Venerable Dr. Mary Glowrey in India, the C
 - Advanced programmes in medical sciences.
 
 These are Congregation-wide fields of service. For Hyderabad-specific facilities, consult the [Province's institution profiles](/institutions).
-
-*Source: [Health Care — Congregation of Jesus Mary Joseph](https://congregationjmj.org/health-care).*
 `,
   "social-work": `## Congregation-wide social outreach
 
@@ -59,8 +53,6 @@ The Congregation describes social programmes that seek to accompany people facin
 - Assistance to survivors of trafficking and to other vulnerable communities.
 
 Local initiatives are coordinated through the Province's social apostolate and collaborating services.
-
-*Source: [Social Apostolate — Congregation of Jesus Mary Joseph](https://congregationjmj.org/social-apostolate).*
 `,
   "pastoral-and-evangelization": `## Forms of pastoral and evangelizing service
 
@@ -74,8 +66,6 @@ Direct evangelization grows from the witness of the Sisters' daily lives and acc
 - Pastoral accompaniment of families.
 
 Within Hyderabad Province, JMJ Subodha Centre in Kurnool provides a further focus for missionary animation, catechesis and pastoral renewal, described above.
-
-*Source: [Evangelization — Congregation of Jesus Mary Joseph](https://congregationjmj.org/evangelization).*
 `,
   "eco-friendliness-and-protection": `## Mission and JPIC
 
@@ -88,7 +78,5 @@ Within Hyderabad Province, JMJ Subodha Centre in Kurnool provides a further focu
 - Foster environmentally responsible lifestyles in the spirit of *Laudato Si'*, together with achievable development goals.
 
 The Congregation also publishes reports and resources about its ecological commitments and JPIC initiatives.
-
-*Source: [Mission & JPIC — Congregation of Jesus Mary Joseph](https://congregationjmj.org/missions-jpic).*
 `,
 };

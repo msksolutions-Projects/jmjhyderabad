@@ -35,7 +35,6 @@ export const navigation: NavGroup[] = [
     items: [
       { label: "Message from the Provincial Superior", href: "/province/provincial-message", icon: "mail", slug: "provincial-message" },
       { label: "Meet our Province Teams", href: "/province/teams", icon: "users" },
-      { label: "Provincial Chapter 2023", href: "/province/provincial-chapter-2023", icon: "calendar", slug: "provincial-chapter-2023" },
       { label: "Provincial Council", href: "/province/provincial-council", icon: "building", slug: "provincial-council" },
     ],
   },

@@ -99,12 +99,17 @@ function ReflectionBlock({ items, anchor }: { items: Reflection[]; anchor: strin
 
 /* ---------- The six cards (reference order) ---------- */
 
+
 function FounderCard() {
   return (
     <CardBox title="Founder" className="reference-portrait" image={{ src: "/brand/congregation-founder.webp", alt: "Portrait of Rev. Fr. Mathias Wolff S.J., founder of the Society of Jesus Mary Joseph" }}>
       <p>
         Rev. Fr. Mathias Wolff S.J. (1779–1857) founded the Society of Jesus Mary Joseph in Amersfoort, Netherlands, in
-        1822, for the liberation of the oppressed, the poor, the voiceless and the marginalized. <ReadMore to="/who-we-are/founder" about="our Founder" />
+        1822, for the liberation of the oppressed, the poor, the voiceless and the marginalized.
+      </p>
+      <p>
+        Seeing the urgent need for Catholic education, especially for girls, he gave the first Sisters his charism of
+        Ever Adaptable Apostolic Availability: to go wherever the needs of God&rsquo;s people call. <ReadMore to="/who-we-are/founder" about="our Founder" />
       </p>
       {founderReflections.length ? (
         <ReflectionBlock items={founderReflections} anchor="founder" />
@@ -145,15 +150,23 @@ function SecondCard() {
   );
 }
 
-/** Congregation leadership is distinct from the Province's Provincial Superior. */
+/** The Province's Provincial Superior, Sr. Pauline Nusi; Read More opens her full message. */
 function ThirdCard() {
   return (
-    <CardBox title="Message from Superior General" className="reference-portrait" image={{ src: "/brand/congregation-superior-general.webp", alt: "Portrait of the Superior General of the Congregation of Jesus Mary Joseph in a blue religious habit" }}>
+    <CardBox title="Message from Provincial Superior" className="reference-portrait" image={{ src: "/brand/provincial-superior-card.webp", alt: "Portrait of Sr. Pauline Nusi, Provincial Superior of JMJ Hyderabad Province, in an orange sari" }}>
       <p>
-        The Superior General welcomes visitors on behalf of the Congregation of Jesus Mary Joseph,
-        drawing inspiration from the life of Jesus and the Founder's charism of apostolic availability. <ReadMore to="/message-from-superior-general" about="the message from the Superior General" />
+        <strong>Sr. Pauline Nusi</strong>, Provincial Superior, extends a warm welcome to all who visit
+        JMJ Hyderabad Province: a journey of faith, love and service, inspired by our founder Fr. Mathias Wolff, SJ.
       </p>
-      <div className="link-box"><ThemeButton to="/province/provincial-message">Message from Our Provincial Superior</ThemeButton></div>
+      <p>
+        From classrooms and healthcare centres to pastoral and social ministries, our Sisters carry forward the mission
+        entrusted to us with dedication and joy. <ReadMore to="/province/provincial-message" about="the message from the Provincial Superior" />
+      </p>
+      <div className="reflection-block">
+        <h4>From her message</h4>
+        <p className="reflection-quote">“Our mission remains relevant when we listen with compassion, respond with courage, and serve with humility.”</p>
+        <p className="reflection-date">Sr. Pauline Nusi, Provincial Superior</p>
+      </div>
     </CardBox>
   );
 }

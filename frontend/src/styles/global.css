@@ -853,6 +853,9 @@ a.stat:hover { border-color: var(--sky-500); transform: translateY(-2px); }
 /* ==========================================================================
    Home photo carousel — full-bleed photographs, no blue letterbox panels
    ========================================================================== */
+.hero-gallery { position: relative; width: 100%; overflow: hidden; background: #f8fafc; }
+/* Banner size per device: a steady shape on phones/tablets, and on desktops never taller
+   than the screen space left under the header, so the whole photo is seen without scrolling. */
 .hero-gallery__stage {
   position: relative; width: 100%; overflow: hidden; background: #f8fafc;
   aspect-ratio: 3 / 2; max-height: 80vh; max-height: 80svh;
@@ -1283,9 +1286,22 @@ body.assembly-modal-open { overflow: hidden; }
 .masthead { background: linear-gradient(110deg, #e0efff 0%, #fffdf8 54%, #edf7ff 100%); border-bottom: 1px solid #d6e5f4; position: sticky; top: 0; z-index: 900; }
 .masthead__inner { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px; min-height: 76px; padding-block: 8px; }
 .masthead__logo img { width: 58px; height: 58px; object-fit: contain; }
-.masthead__title { text-align: center; text-decoration: none; color: var(--navy-800); min-width: 0; }
+.masthead__title { text-align: center; text-decoration: none; color: var(--navy-800); min-width: 0; container-type: inline-size; }
 .masthead__title:hover { color: var(--navy-800); }
-.masthead__name { display: block; font-family: "Playfair Display", Georgia, "Times New Roman", serif; font-weight: 700; font-optical-sizing: auto; font-size: clamp(1.05rem, 0.57rem + 2.05vw, 2.65rem); line-height: 1.12; letter-spacing: -0.025em; text-wrap: balance; }
+/* Site title: Cinzel, always on one line (the size follows the space available), in a bright royal-blue shimmer. */
+.masthead__name {
+  display: block; white-space: nowrap;
+  font-family: "Cinzel", "Trajan Pro", Georgia, "Times New Roman", serif; font-weight: 700;
+  font-size: min(3rem, 4.7cqi); line-height: 1.15; letter-spacing: 0.02em;
+  color: #0b4fb0;
+  background: linear-gradient(90deg, #0a3f95 0%, #1565d8 35%, #2a8bf2 50%, #1565d8 65%, #0a3f95 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.9));
+}
+/* Phones: one line would shrink the title to about 9px, too small to read, so it uses two balanced lines instead. */
+@media (max-width: 599px) {
+  .masthead__name { white-space: normal; text-wrap: balance; font-size: clamp(0.95rem, 4.6vw, 1.15rem); line-height: 1.2; }
+}
 .masthead__sub { display: block; margin-top: 4px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-700); font-size: clamp(0.62rem, 0.55rem + 0.4vw, 0.95rem); }
 .masthead__portrait { display: none; width: auto; height: 100px; filter: drop-shadow(0 4px 10px rgba(8, 37, 70, 0.18)); }
 .masthead__actions { display: flex; align-items: center; color: var(--navy-700); }
@@ -1353,6 +1369,20 @@ body.assembly-modal-open { overflow: hidden; }
 .read-more-anim:hover { color: var(--navy-700); }
 .read-more-anim:hover .arrow { transform: translateX(5px); }
 
+/* Prayers of the Congregation: three designed prayer cards (PC, PC1, PC2) */
+.prayer-cards__intro { margin: 0 0 22px; color: var(--ink-soft); }
+.prayer-cards { display: grid; grid-template-columns: 1fr; gap: 26px; }
+@media (min-width: 700px) { .prayer-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .prayer-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.prayer-card { display: flex; flex-direction: column; scroll-margin-top: 110px; }
+.prayer-card__image { display: block; overflow: hidden; border-radius: 12px; background: #fbf6ea; border: 1px solid #e6d7b0; box-shadow: 0 12px 30px rgba(8, 37, 70, 0.12); transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease); }
+.prayer-card__image:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(8, 37, 70, 0.18); }
+.prayer-card__image img { display: block; width: 100%; height: auto; }
+.panel .prayer-card__title { margin: 14px 0 6px; font-size: 1.08rem; line-height: 1.35; color: var(--navy-800); text-align: center; }
+.prayer-card__text { margin-top: 2px; font-size: 0.93rem; }
+.prayer-card__text summary { cursor: pointer; color: var(--sky-700, #1d5f9e); font-weight: 600; text-align: center; padding: 6px 0; }
+.prayer-card__text p { margin: 8px 0; line-height: 1.6; color: var(--ink-soft); }
+.prayer-cards__related { margin: 28px 0 0; color: var(--ink-soft); }
 .reflection-block { margin-top: auto; padding: 16px 18px; border-left: 4px solid var(--gold-500); background: var(--sky-50); border-radius: 0 6px 6px 0; }
 .reflection-block h4 { margin: 0 0 6px; font-family: var(--font-serif); font-size: 1.05rem; color: var(--navy-700); }
 .reflection-quote { margin: 0; font-style: italic; color: var(--ink); font-size: 0.93rem; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }

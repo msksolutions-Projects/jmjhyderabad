@@ -41,7 +41,7 @@ describe("HomePage", () => {
 
   it("follows the reference site's home sections, in order", () => {
     renderWithProviders(<HomePage />);
-    const order = [/^welcome to the congregation/i, /^founder$/i, /^ven\. mary glowrey$/i, /^message from superior general$/i, /^joining us$/i, /^news strings$/i, /^latest news$/i, /^our presence$/i, /^photo gallery$/i];
+    const order = [/^welcome to the congregation/i, /^founder$/i, /^ven\. mary glowrey$/i, /^message from provincial superior$/i, /^joining us$/i, /^news strings$/i, /^latest news$/i, /^our presence$/i, /^photo gallery$/i];
     const headings = screen.getAllByRole("heading").map((h) => h.textContent ?? "");
     let last = -1;
     for (const name of order) {
@@ -63,14 +63,14 @@ describe("HomePage", () => {
 
   it("shows the three supplied Congregation portraits and uses local message links", () => {
     renderWithProviders(<HomePage />);
-    expect(screen.getByRole("heading", { name: /message from superior general/i })).toBeInTheDocument();
-    const messageCard = screen.getByRole("heading", { name: /message from superior general/i }).closest("article")!;
-    expect(within(messageCard).getByRole("link", { name: /read more/i })).toHaveAttribute("href", "/message-from-superior-general");
-    expect(within(messageCard).getByRole("link", { name: /message from our provincial superior/i })).toHaveAttribute("href", "/province/provincial-message");
+    expect(screen.getByRole("heading", { name: /message from provincial superior/i })).toBeInTheDocument();
+    const messageCard = screen.getByRole("heading", { name: /message from provincial superior/i }).closest("article")!;
+    expect(within(messageCard).getAllByText(/sr\. pauline nusi/i).length).toBeGreaterThan(0);
+    expect(within(messageCard).getByRole("link", { name: /read more/i })).toHaveAttribute("href", "/province/provincial-message");
     const portraits = [
       "/brand/congregation-founder.webp",
       "/brand/congregation-mary-glowrey.webp",
-      "/brand/congregation-superior-general.webp",
+      "/brand/provincial-superior-card.webp",
     ];
     const sources = screen.getAllByRole("img").map((img) => img.getAttribute("src"));
     for (const src of portraits) expect(sources).toContain(src);

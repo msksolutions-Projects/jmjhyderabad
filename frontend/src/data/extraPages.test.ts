@@ -3,11 +3,15 @@ import { hasSection } from "@/services/extraPages";
 import { getSection } from "@/services/content";
 
 describe("Hyderabad Province menu content", () => {
-  it("has sourced content for the three new Provincialate pages", () => {
-    for (const slug of ["provincial-message", "provincial-chapter-2023", "provincial-council"]) {
+  it("has sourced content for the Provincialate pages", () => {
+    for (const slug of ["provincial-message", "provincial-council"]) {
       expect(hasSection(slug)).toBe(true);
       expect(getSection(slug).markdown.length).toBeGreaterThan(500);
     }
+  });
+
+  it("no longer has a Provincial Chapter 2023 page", () => {
+    expect(hasSection("provincial-chapter-2023")).toBe(false);
   });
 
   it("links the Provincial message to the hosted Jubilee issue, not an external file viewer", () => {

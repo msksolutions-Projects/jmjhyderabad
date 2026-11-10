@@ -46,9 +46,6 @@ export function OurLifePage() {
             The Congregation's Cross and Ring are outward signs of religious commitment. They point to the deeper
             vocation of living in humility, love and readiness to serve wherever the mission calls.
           </p>
-          <p className="small text-muted">
-            Adapted from the <a href="https://congregationjmj.org/our-life-in-the-community" target="_blank" rel="noopener noreferrer">Congregation's account of community life</a>.
-          </p>
         </article>
         <h2 style={{ fontSize: "1.4rem", margin: "32px 0 16px" }}>Explore our life and mission</h2>
         <div className="grid grid--3">

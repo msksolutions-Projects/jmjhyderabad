@@ -8,6 +8,7 @@ import { getSection, toTitleCase } from "@/services/content";
 import { websiteHyderabadAdditions } from "@/data/websiteHyderabadAdditions";
 import { websiteCongregationAdditions } from "@/data/websiteCongregationAdditions";
 import { crumbsFor, findGroup } from "@/data/navigation";
+import { PrayerCards } from "@/features/prayers/PrayerCards";
 
 const descriptions: Record<string, string> = {
   "our-founder": "The life, ministry and charism of Rev. Fr. Mathias Wolff S.J.",
@@ -133,7 +134,7 @@ export function ContentPage({ slug, eyebrow, breadcrumbs }: ContentPageProps) {
               </figcaption>
             </figure>
           )}
-          <ContentMarkdown markdown={section.markdown} />
+          {slug === "congregation-prayers" ? <PrayerCards /> : <ContentMarkdown markdown={section.markdown} />}
         </article>
         {newContent && (
           <section className="panel" aria-label="Further Province information">

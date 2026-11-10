@@ -167,7 +167,6 @@ export const routeForSlug: Record<string, string> = {
   "news-and-updates": "/news",
   "jmj-subodha-centre": "/mission/jmj-subodha-centre",
   "province-teams": "/province/teams",
-  "provincial-chapter-2023": "/province/provincial-chapter-2023",
   "provincial-message": "/province/provincial-message",
   "direction-statement": "/province/direction-statement",
   "spirituality-charism": "/spirituality/charism",
