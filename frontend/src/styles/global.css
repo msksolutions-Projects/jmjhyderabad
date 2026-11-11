@@ -462,6 +462,11 @@ tbody tr:hover td { background: #fbfdff; }
 }
 .filter-chip:hover { border-color: var(--sky-500); }
 .filter-chip[aria-pressed="true"] { background: var(--navy-700); border-color: var(--navy-700); color: #fff; }
+/* Main gallery folder (e.g. Perpetual Profession) and its sub-folder row */
+.filter-chip--folder { display: inline-flex; align-items: center; gap: 6px; }
+.filter-chip--folder svg { width: 16px; height: 16px; }
+.filter-chips--sub { align-items: center; margin-top: -8px; padding: 10px 12px; border-radius: 12px; background: #eef5fc; border: 1px solid #d3e3f2; }
+.filter-chips__title { font-weight: 700; color: var(--navy-800); font-size: 0.92rem; margin-right: 4px; white-space: nowrap; }
 
 /* ==========================================================================
    Forms

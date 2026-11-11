@@ -11,13 +11,13 @@ describe("GalleryPage", () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue({
       ok: true,
       json: async () => ({
-        categories: [{ id: "postulency", label: "Postulency", count: 1 }],
+        categories: [{ id: "pcci-meet", label: "PCCI Meet", count: 1 }],
         images: [{
           id: "photo-1",
           title: "PT - 2025",
           alt: "Sisters standing together",
-          category: "postulency",
-          categoryLabel: "Postulency",
+          category: "pcci-meet",
+          categoryLabel: "PCCI Meet",
           src: "/photo.webp",
           thumbnail: "/thumb.webp",
           width: 1200,
@@ -31,15 +31,15 @@ describe("GalleryPage", () => {
 
     const tile = await screen.findByRole("button", { name: "View photograph 1" });
     // The album filter shows the folder name only (no photo count), and photos carry no caption.
-    expect(screen.getByRole("button", { name: "Postulency" })).toBeInTheDocument();
-    expect(screen.queryByText("Postulency (1)")).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "PCCI Meet" })).toBeInTheDocument();
+    expect(screen.queryByText("PCCI Meet (1)")).not.toBeInTheDocument();
     expect(screen.queryByText("PT - 2025")).not.toBeInTheDocument();
-    expect(screen.getAllByText("Postulency", { exact: true })).toHaveLength(1);
+    expect(screen.getAllByText("PCCI Meet", { exact: true })).toHaveLength(1);
 
     await user.click(tile);
     const viewer = screen.getByRole("dialog");
     expect(within(viewer).getByRole("img", { name: "Sisters standing together" })).toBeInTheDocument();
     expect(within(viewer).queryByText("PT - 2025")).not.toBeInTheDocument();
-    expect(within(viewer).queryByText("Postulency")).not.toBeInTheDocument();
+    expect(within(viewer).queryByText("PCCI Meet")).not.toBeInTheDocument();
   });
 });

@@ -61,6 +61,7 @@ const paths = {
   trend: "m23 6-9.5 9.5-5-5L1 18M17 6h6v6",
   draft: "M12 20h9M3 21v-3.5L15.5 5a2.1 2.1 0 0 1 3 3L6 20.5Z",
   printer: "M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z",
+  folder: "M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z",
 } as const;
 
 export type IconName = keyof typeof paths;

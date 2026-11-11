@@ -8,6 +8,7 @@ import { ErrorState } from "@/components/feedback/ErrorState";
 import { Seo } from "@/components/seo/Seo";
 import { Icon } from "@/components/ui/Icon";
 import { fetchGallery, UPLOADS_ID, type GalleryImage } from "@/features/gallery/gallery.service";
+import { groupFor } from "@/features/gallery/galleryGroups";
 
 const PAGE_SIZE = 48;
 
@@ -89,12 +90,20 @@ export function GalleryPage() {
     staleTime: Infinity,
   });
 
+  // A main folder (e.g. Perpetual Profession) or one of its sub-folders.
+  const activeGroup = groupFor(category);
+
   const filtered = useMemo(() => {
     if (!data) return [];
     const term = query.trim().toLowerCase();
+    const group = groupFor(category);
+    const inGroup = group && group.id === category ? new Set(group.children.map((child) => child.id)) : null;
     return data.images.filter(
       (image) =>
-        (category === "all" || image.category === category || (category === UPLOADS_ID && image.isUpload)) &&
+        (category === "all" ||
+          image.category === category ||
+          (inGroup !== null && inGroup.has(image.category)) ||
+          (category === UPLOADS_ID && image.isUpload)) &&
         (!term || `${image.title} ${image.categoryLabel}`.toLowerCase().includes(term)),
     );
   }, [data, category, query]);
@@ -162,18 +171,53 @@ export function GalleryPage() {
               </button>
               {data.categories
                 .filter((item) => item.count > 0)
-                .map((item) => (
-                  <button
-                    key={item.id}
-                    type="button"
-                    className="filter-chip"
-                    aria-pressed={category === item.id}
-                    onClick={() => choose(item.id)}
-                  >
-                    {item.label}
-                  </button>
-                ))}
+                .map((item, index, shown) => {
+                  const group = groupFor(item.id);
+                  if (group) {
+                    // Show the main folder once, in place of the first of its sub-folders in the list.
+                    if (shown.findIndex((other) => groupFor(other.id)?.id === group.id) !== index) return null;
+                    return (
+                      <button
+                        key={group.id}
+                        type="button"
+                        className="filter-chip filter-chip--folder"
+                        aria-pressed={activeGroup?.id === group.id}
+                        aria-expanded={activeGroup?.id === group.id}
+                        onClick={() => choose(group.id)}
+                      >
+                        <Icon name="folder" /> {group.label}
+                      </button>
+                    );
+                  }
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      className="filter-chip"
+                      aria-pressed={category === item.id}
+                      onClick={() => choose(item.id)}
+                    >
+                      {item.label}
+                    </button>
+                  );
+                })}
             </div>
+
+            {activeGroup && (
+              <div className="filter-chips filter-chips--sub" role="group" aria-label={`${activeGroup.label} folders`}>
+                <span className="filter-chips__title">{activeGroup.label}:</span>
+                <button type="button" className="filter-chip" aria-pressed={category === activeGroup.id} onClick={() => choose(activeGroup.id)}>
+                  {activeGroup.allLabel}
+                </button>
+                {activeGroup.children
+                  .filter((child) => data.categories.some((item) => item.id === child.id && item.count > 0))
+                  .map((child) => (
+                    <button key={child.id} type="button" className="filter-chip" aria-pressed={category === child.id} onClick={() => choose(child.id)}>
+                      {child.label}
+                    </button>
+                  ))}
+              </div>
+            )}
 
             <div className="row row--between" style={{ marginBottom: 16 }}>
               <div className="input-icon" style={{ flex: "1 1 260px", maxWidth: 420 }}>
