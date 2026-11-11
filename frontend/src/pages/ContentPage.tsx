@@ -41,9 +41,9 @@ const bannerImages: Record<string, string> = {
 // Only pair ministry pages with photos whose supplied album identifies the activity.
 const ministryPhotos: Record<string, { src: string; label: string }[]> = {
   formation: [
-    { src: "/media/client-2026/aspirancy/1MIs1ZJGxf-D8kglb0uH0R8atZSi1GeCW-thumb.webp", label: "Aspirancy · 2026" },
-    { src: "/media/client-2026/postulency/1sYg5bX9alhqe2xkjSK2V_aW86xY52-jf-thumb.webp", label: "Postulancy · 2025" },
-    { src: "/media/client-2026/novices/1b4A_QVRtmMc2H9GVexKHZs66yPGBg3h4-thumb.webp", label: "Novices · 2025" },
+    { src: "/media/client-2026/aspirancy/1MIs1ZJGxf-D8kglb0uH0R8atZSi1GeCW-thumb.webp", label: "Pre Postulancy" },
+    { src: "/media/client-2026/postulency/1sYg5bX9alhqe2xkjSK2V_aW86xY52-jf-thumb.webp", label: "Postulancy" },
+    { src: "/media/client-2026/novices/1b4A_QVRtmMc2H9GVexKHZs66yPGBg3h4-thumb.webp", label: "Novices" },
   ],
   "pastoral-and-evangelization": [
     { src: "/media/client-2026/youth-fest-2025/1FiFzkmmH5DV0eYrv7Mlc3YRIXy_gAT09-thumb.webp", label: "Youth Fest · Kurnool 2025" },
