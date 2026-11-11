@@ -12,7 +12,7 @@ SOURCE = json.loads((ROOT / "tools" / "drive_inventory.json").read_text())
 GALLERY = json.loads((ROOT / "public" / "data" / "gallery.json").read_text())
 PUBLIC = ROOT / "public"
 # Folders added from local uploads (not in the Drive inventory). Count = photos in each.
-LOCAL_FOLDERS = {"jmj-subodha": 27, "senior-sisters-day-2025": 78, "jubilee-2025": 44, "pc-installation": 40, "jubilee-2024": 27}
+LOCAL_FOLDERS = {"jmj-subodha": 27, "senior-sisters-day-2025": 78, "jubilee-2025": 44, "pc-installation": 35, "jubilee-2024": 27, "temporary-profession-2025": 5, "temporary-profession-2026": 23, "lgbtq-2025": 8, "ps-installation-2024": 79}
 
 expected = {
     f"{folder['slug']}-{file['id']}"

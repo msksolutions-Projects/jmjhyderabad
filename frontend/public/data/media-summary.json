@@ -2,7 +2,7 @@
   "source": "12 client-approved, publicly shared Google Drive folders",
   "importedPhotographs": 484,
   "uniquePhotographs": 484,
-  "filters": 17,
+  "filters": 21,
   "nestedAspirancyFolders": 2,
   "videosNotIncludedInPhotoGallery": 3,
   "imageFormat": "webp",
@@ -12,7 +12,7 @@
     "jmj-subodha": 27,
     "senior-sisters-day-2025": 78,
     "jubilee-2025": 44,
-    "pc-installation": 40,
+    "pc-installation": 35,
     "jubilee-2024": 27,
     "postulency": 2,
     "novices": 3,
@@ -25,13 +25,21 @@
     "lay-collaboration": 44,
     "thanksgiving-pc": 74,
     "youth-fest-2025": 11,
-    "assessment-teams": 63
+    "assessment-teams": 63,
+    "temporary-profession-2025": 5,
+    "temporary-profession-2026": 23,
+    "lgbtq-2025": 8,
+    "ps-installation-2024": 79
   },
   "localFolders": {
     "jmj-subodha": "JMJ Subodha Centre inauguration \u2014 27 images",
     "senior-sisters-day-2025": "Senior Sisters' Day 27.10.2025 \u2014 78 photos (1 duplicate and 1 video left out)",
     "jubilee-2025": "Jubilee 2025 \u2014 44 photos",
-    "pc-installation": "PC Installation (Nov 2024) \u2014 40 photos",
-    "jubilee-2024": "Jubilee 2024 \u2014 27 photos"
+    "pc-installation": "PC Installation (Nov 2024) \u2014 35 photos (5 removed at the client's request)",
+    "jubilee-2024": "Jubilee 2024 \u2014 27 photos",
+    "temporary-profession-2025": "Temporary Profession 2025 \u2014 5 photos",
+    "temporary-profession-2026": "Temporary Profession 2026 \u2014 23 photos (1 duplicate left out)",
+    "lgbtq-2025": "LGBTQ, January 2025 \u2014 8 photos",
+    "ps-installation-2024": "PS Installation, 12\u201313 September 2024 \u2014 79 photos"
   }
 }

@@ -32,6 +32,7 @@ export const galleryGroups: GalleryGroup[] = [
     label: "Province Council",
     allLabel: "All",
     children: [
+      { id: "ps-installation-2024", label: "PS Installation · Sep 2024" },
       { id: "pc-installation", label: "PC Installation · Nov 2024" },
       { id: "thanksgiving-pc", label: "Thanksgiving (PC) · Nov 2024" },
     ],
@@ -62,6 +63,21 @@ export const galleryGroups: GalleryGroup[] = [
     label: "Assessment Teams",
     allLabel: "All",
     children: [{ id: "assessment-teams", label: "Assessment Teams · Feb 2025" }],
+  },
+  {
+    id: "temporary-profession",
+    label: "Temporary Profession",
+    allLabel: "All years",
+    children: [
+      { id: "temporary-profession-2025", label: "2025" },
+      { id: "temporary-profession-2026", label: "2026" },
+    ],
+  },
+  {
+    id: "lgbtq",
+    label: "LGBTQ",
+    allLabel: "All",
+    children: [{ id: "lgbtq-2025", label: "LGBTQ · Jan 2025" }],
   },
   {
     id: "perpetual-profession",
