@@ -30,9 +30,11 @@ describe("GalleryPage", () => {
     renderWithProviders(<GalleryPage />, { initialEntries: ["/gallery"] });
 
     const tile = await screen.findByRole("button", { name: "View photograph 1" });
-    expect(screen.getByText("Postulency (1)")).toBeInTheDocument();
+    // The album filter shows the folder name only (no photo count), and photos carry no caption.
+    expect(screen.getByRole("button", { name: "Postulency" })).toBeInTheDocument();
+    expect(screen.queryByText("Postulency (1)")).not.toBeInTheDocument();
     expect(screen.queryByText("PT - 2025")).not.toBeInTheDocument();
-    expect(screen.queryByText("Postulency", { exact: true })).not.toBeInTheDocument();
+    expect(screen.getAllByText("Postulency", { exact: true })).toHaveLength(1);
 
     await user.click(tile);
     const viewer = screen.getByRole("dialog");

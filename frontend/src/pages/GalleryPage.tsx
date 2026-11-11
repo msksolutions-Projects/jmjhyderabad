@@ -158,7 +158,7 @@ export function GalleryPage() {
           <>
             <div className="filter-chips" role="group" aria-label="Albums">
               <button type="button" className="filter-chip" aria-pressed={category === "all"} onClick={() => choose("all")}>
-                All ({data.images.length})
+                All
               </button>
               {data.categories
                 .filter((item) => item.count > 0)
@@ -170,7 +170,7 @@ export function GalleryPage() {
                     aria-pressed={category === item.id}
                     onClick={() => choose(item.id)}
                   >
-                    {item.label} ({item.count})
+                    {item.label}
                   </button>
                 ))}
             </div>
