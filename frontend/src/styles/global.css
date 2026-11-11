@@ -1383,6 +1383,15 @@ body.assembly-modal-open { overflow: hidden; }
 .prayer-card__text summary { cursor: pointer; color: var(--sky-700, #1d5f9e); font-weight: 600; text-align: center; padding: 6px 0; }
 .prayer-card__text p { margin: 8px 0; line-height: 1.6; color: var(--ink-soft); }
 .prayer-cards__related { margin: 28px 0 0; color: var(--ink-soft); }
+/* PDF cards with a first-page thumbnail (Safeguarding) */
+.doc-card__layout { display: flex; gap: 18px; align-items: flex-start; }
+.doc-card__thumb { flex: 0 0 140px; display: block; border-radius: 6px; overflow: hidden; background: #fff; border: 1px solid #d8e3ee; box-shadow: 0 6px 16px rgba(8, 37, 70, 0.12); transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease); }
+.doc-card__thumb:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(8, 37, 70, 0.18); }
+.doc-card__thumb img { display: block; width: 100%; height: auto; }
+.doc-card__info { min-width: 0; }
+.doc-card__info .chip { margin-bottom: 10px; }
+.doc-card__info h3 { margin-top: 0; }
+@media (max-width: 420px) { .doc-card__thumb { flex-basis: 104px; } }
 .reflection-block { margin-top: auto; padding: 16px 18px; border-left: 4px solid var(--gold-500); background: var(--sky-50); border-radius: 0 6px 6px 0; }
 .reflection-block h4 { margin: 0 0 6px; font-family: var(--font-serif); font-size: 1.05rem; color: var(--navy-700); }
 .reflection-quote { margin: 0; font-style: italic; color: var(--ink); font-size: 0.93rem; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }

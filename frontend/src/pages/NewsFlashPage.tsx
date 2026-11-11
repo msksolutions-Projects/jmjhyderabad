@@ -34,7 +34,7 @@ export function NewsFlashPage({ kind }: { kind: Kind }) {
   return (
     <>
       <Seo title={page.title} description={page.description} path={page.path} />
-      <PageHeader eyebrow="News Flash" title={page.title} description={page.description} breadcrumbs={[{ label: "News Flash", href: "/news-flash" }]} />
+      <PageHeader eyebrow="JMJ Wisdom" title={page.title} description={page.description} breadcrumbs={[{ label: "JMJ Wisdom", href: "/news-flash" }]} />
       <PageShell>
         {isPending && <LoadingSkeleton rows={3} height={200} />}
         {isError && <ErrorState title="This list did not load" message={(error as Error).message} onRetry={() => void refetch()} />}

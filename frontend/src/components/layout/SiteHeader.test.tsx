@@ -13,7 +13,7 @@ describe("SiteHeader", () => {
   it("offers every section of the reference site map", () => {
     renderWithProviders(<SiteHeader />);
     const [desktop] = screen.getAllByRole("navigation", { name: /main/i });
-    for (const label of ["Provincialate", "Spirituality", "Mission", "Community", "News Flash", "Joining Us", "Ven. Mary Glowrey"]) {
+    for (const label of ["Provincialate", "Spirituality", "Mission", "Community", "JMJ Wisdom", "Joining Us", "Ven. Mary Glowrey"]) {
       expect(within(desktop!).getByRole("button", { name: label })).toBeInTheDocument();
     }
     // The menu follows the Province's list exactly, including pages still being prepared.

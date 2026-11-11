@@ -20,7 +20,7 @@ export interface NavGroup {
 
 /**
  * Site map, exactly as set out by the Province ("Website 2" document):
- * Home · Provincialate · Spirituality · Mission · Community · News Flash ·
+ * Home · Provincialate · Spirituality · Mission · Community · JMJ Wisdom ·
  * Joining Us · Ven. Mary Glowrey. Every older URL still works and the
  * remaining pages (institutions, gallery, news, contact…) are linked from
  * the home page and footer.
@@ -68,7 +68,7 @@ export const navigation: NavGroup[] = [
   },
   {
     id: "newsflash",
-    label: "News Flash",
+    label: "JMJ Wisdom",
     items: [
       { label: "Jubilee Vibes", href: "/news-flash/jubilee-vibes", icon: "star" },
       { label: "News Flash", href: "/news-flash", icon: "news" },

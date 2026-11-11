@@ -33,7 +33,7 @@ export function SafeguardingPage() {
         <ul className="reset-list grid grid--2">
           {safeguardingDocuments.map((document) => (
             <li key={document.file}>
-              <DocumentCard title={document.title} file={document.file} bytes={document.bytes} description={document.description} />
+              <DocumentCard title={document.title} file={document.file} bytes={document.bytes} description={document.description} thumbnail={document.thumbnail} />
             </li>
           ))}
         </ul>
