@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Icon } from "@/components/ui/Icon";
-import { slides, type Slide } from "./slides";
+import { slides, slideUrl, type Slide } from "./slides";
 
 const INTERVAL = 6000;
 /** Widths match the real files, so the browser downloads the smallest image that is still sharp. */
 const srcSet = (slide: Slide) =>
-  `${slide.base}-sm.webp 600w, ${slide.base}-md.webp 1000w, ${slide.base}.webp ${Math.max(slide.width, 1001)}w`;
+  `${slideUrl(slide, "-sm")} 600w, ${slideUrl(slide, "-md")} 1000w, ${slideUrl(slide, "")} ${Math.max(slide.width, 1001)}w`;
 
 export function HeroSlider() {
   const [index, setIndex] = useState(0);
@@ -95,7 +95,7 @@ export function HeroSlider() {
               {show && (
                 <img
                   className="hero-gallery__photo"
-                  src={`${slide.base}-md.webp`}
+                  src={slideUrl(slide, "-md")}
                   srcSet={srcSet(slide)}
                   sizes="100vw"
                   alt={slide.alt}

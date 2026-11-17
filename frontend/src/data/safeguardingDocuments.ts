@@ -4,7 +4,7 @@ export const safeguardingDocuments = [
     title: "Approved Safeguarding Policy",
     description: "Approved policy document · 94 pages",
     file: "/documents/safeguarding/approved-policy.pdf",
-    thumbnail: "/documents/safeguarding/thumbs/approved-policy.webp",
+    thumbnail: "/documents/safeguarding/thumbs/approved-policy.webp?v=2026-11-17",
     originalFilename: "Approved-policy.pdf",
     bytes: 9083816,
   },
