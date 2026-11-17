@@ -39,6 +39,9 @@ const pages = [
   ["/contact", 0.8], ["/contact/convents", 0.7],
   ["/province/teams", 0.6], ["/joining-us/whom-to-contact", 0.7], ["/mission/jmj-subodha-centre", 0.6],
   ["/news-flash", 0.7, "weekly"], ["/news-flash/jubilee-vibes", 0.7, "weekly"],
+  ["/about-us", 0.8],
+  ["/institutes-services", 0.8], ["/institutes-services/education", 0.7], ["/institutes-services/healthcare", 0.7],
+  ["/institutes-services/social", 0.7], ["/institutes-services/pastoral-evangelization", 0.7],
 ];
 
 // Pages added from the Province's content document appear once written.

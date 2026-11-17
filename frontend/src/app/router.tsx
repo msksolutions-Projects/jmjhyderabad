@@ -21,6 +21,7 @@ const GalleryPage = named(() => import("@/pages/GalleryPage"), "GalleryPage");
 const PublicationsPage = named(() => import("@/pages/PublicationsPage"), "PublicationsPage");
 const SafeguardingPage = named(() => import("@/pages/SafeguardingPage"), "SafeguardingPage");
 const OurLifePage = named(() => import("@/pages/OurLifePage"), "OurLifePage");
+const AboutUsPage = named(() => import("@/pages/AboutUsPage"), "AboutUsPage");
 const NewsPage = named(() => import("@/pages/NewsPage"), "NewsPage");
 const NoticesPage = named(() => import("@/pages/NoticesPage"), "NoticesPage");
 const NotFoundPage = named(() => import("@/pages/NotFoundPage"), "NotFoundPage");
@@ -32,6 +33,8 @@ const SuperiorGeneralMessagePage = named(() => import("@/pages/SuperiorGeneralMe
 const PreparingPage = named(() => import("@/pages/PreparingPage"), "PreparingPage");
 const JubileeVibesPage = named(() => import("@/pages/NewsFlashPage"), "JubileeVibesPage");
 const NewsFlashListPage = named(() => import("@/pages/NewsFlashPage"), "NewsFlashListPage");
+const InstitutesServicesPage = named(() => import("@/pages/InstitutesServicesPage"), "InstitutesServicesPage");
+const InstitutesServicesCategoryPage = named(() => import("@/pages/InstitutesServicesPage"), "InstitutesServicesCategoryPage");
 
 const AdminRoot = lazy(() => import("@/admin/AdminRoot"));
 const AdminLayout = lazy(() => import("@/admin/AdminLayout"));
@@ -79,6 +82,7 @@ export const router = createBrowserRouter([
       { path: "ministries/safeguarding", element: wrap(<SafeguardingPage />) },
 
       // Community
+      { path: "about-us", element: wrap(<AboutUsPage />) },
       { path: "who-we-are/our-life", element: wrap(<OurLifePage />) },
       { path: "ministries/formation", element: content("formation") },
       { path: "contact/convents", element: wrap(<DirectoryPage />) },
@@ -105,6 +109,8 @@ export const router = createBrowserRouter([
       { path: "province/provincial-council", element: wrap(<ProvincialCouncilPage />) },
       { path: "news-flash", element: wrap(<NewsFlashListPage />) },
       { path: "news-flash/jubilee-vibes", element: wrap(<JubileeVibesPage />) },
+      { path: "institutes-services", element: wrap(<InstitutesServicesPage />) },
+      { path: "institutes-services/:category", element: wrap(<InstitutesServicesCategoryPage />) },
       { path: "province/direction-statement", element: later("direction-statement") },
       { path: "spirituality/charism", element: later("spirituality-charism") },
       { path: "spirituality/life-with-god", element: later("life-with-god") },

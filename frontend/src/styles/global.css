@@ -319,6 +319,30 @@ ul, ol { margin: 0; }
 .page-hero .eyebrow { color: var(--gold-300); }
 @media (min-width: 900px) { .page-hero { padding: 56px 0 64px; } }
 
+/* "Sky" banner (Prayers of the Congregation): a blue sky with a glowing cross, centred title,
+   breadcrumb below the title and a torn-paper bottom edge, as on the congregation website. */
+.page-hero--sky {
+  background: #2f7fd0; text-align: center; padding: 64px 0 76px;
+  --torn: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 1200 30%27 preserveAspectRatio=%27none%27%3E%3Cpath d=%27M0 0 L0 11 L9 9 L25 14 L37 10 L43 9 L48 14 L61 22 L70 20 L75 11 L88 16 L98 12 L105 21 L111 12 L119 22 L124 21 L139 20 L148 20 L157 11 L164 12 L173 18 L189 21 L199 9 L213 13 L228 14 L241 11 L248 11 L260 12 L266 22 L279 21 L288 8 L297 17 L313 22 L322 21 L335 11 L346 14 L360 12 L371 15 L378 11 L387 12 L392 9 L397 15 L412 12 L425 16 L440 15 L456 13 L463 18 L471 9 L482 22 L490 18 L505 15 L514 10 L524 14 L540 17 L550 18 L563 11 L573 9 L578 19 L586 12 L600 17 L608 9 L618 22 L625 12 L637 8 L642 13 L658 9 L667 19 L682 13 L687 13 L696 13 L703 20 L718 14 L732 18 L738 12 L752 11 L764 12 L771 12 L782 17 L789 13 L803 8 L813 8 L825 10 L835 20 L845 12 L859 9 L871 11 L882 22 L890 9 L895 8 L900 19 L907 17 L922 10 L936 8 L949 15 L963 11 L973 8 L979 21 L992 12 L1003 18 L1011 15 L1019 11 L1031 14 L1043 8 L1051 14 L1063 11 L1078 22 L1089 21 L1097 15 L1105 8 L1110 12 L1119 11 L1132 11 L1140 14 L1149 10 L1159 8 L1169 17 L1175 17 L1186 22 L1200 14 L1200 0Z%27/%3E%3C/svg%3E");
+  -webkit-mask: var(--torn) bottom / 100% 30px no-repeat, linear-gradient(#000, #000) top / 100% calc(100% - 29px) no-repeat;
+  mask: var(--torn) bottom / 100% 30px no-repeat, linear-gradient(#000, #000) top / 100% calc(100% - 29px) no-repeat;
+}
+.page-hero--sky::after { content: none; }
+.page-hero--sky .page-hero__bg { opacity: 1; object-position: 72% 40%; }
+.page-hero--sky::before { content: ""; position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 60% 70% at 50% 55%, rgba(8, 37, 70, 0.32), rgba(8, 37, 70, 0) 75%); pointer-events: none; }
+.page-hero--sky h1 {
+  margin: 0 auto; font-weight: 800; width: fit-content; max-width: 100%;
+  background: linear-gradient(90deg, #ffe45c 0%, #ffa53d 25%, #ff5c8a 50%, #d77bff 75%, #7fe3ff 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 2px 2px rgba(8, 37, 70, 0.75)) drop-shadow(0 0 12px rgba(8, 37, 70, 0.45));
+}
+.page-hero--sky .crumbs { margin-top: 12px; }
+.page-hero--sky .crumbs ol { justify-content: center; }
+.page-hero--sky .crumbs, .page-hero--sky .crumbs a { color: #fff; font-weight: 600; text-shadow: 0 1px 6px rgba(8, 37, 70, 0.6); }
+.page-hero--sky .crumbs [aria-current="page"] { color: #ffe14d; }
+@media (min-width: 900px) { .page-hero--sky { padding: 84px 0 96px; } }
+@media (max-width: 599px) { .page-hero--sky { padding: 150px 0 60px; } .page-hero--sky .page-hero__bg { object-position: 88% 0; } }
+
 .crumbs { margin-bottom: 18px; font-size: 0.85rem; }
 .crumbs ol { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; list-style: none; margin: 0; padding: 0; }
 .crumbs li { display: inline-flex; align-items: center; gap: 6px; color: rgba(255, 255, 255, 0.75); }
@@ -409,6 +433,9 @@ ul, ol { margin: 0; }
 .prose hr { border: 0; height: 1px; background: var(--line); margin: 2em 0; }
 .prose img { border-radius: var(--radius); }
 .prose .table-wrap { margin: 1.5em 0; }
+/* Tables in articles: keep words whole; on narrow screens the table scrolls sideways instead. */
+.prose .table-wrap table { overflow-wrap: normal; min-width: 620px; }
+.prose .table-wrap td a { overflow-wrap: anywhere; }
 
 /* ==========================================================================
    Tables
@@ -1329,7 +1356,10 @@ body.assembly-modal-open { overflow: hidden; }
   .nav__link { padding: 0 12px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.02em; height: 54px; }
   .nav__link svg { width: 14px; height: 14px; }
 }
-@media (min-width: 1320px) { .nav__link { padding: 0 16px; font-size: 0.92rem; } }
+/* Ten menu sections: keep them on one line on every laptop screen. */
+@media (min-width: 1100px) and (max-width: 1319px) { .nav__link { padding: 0 5px; font-size: 0.82rem; letter-spacing: 0.01em; } .nav__search { width: 36px; margin-left: 2px; } }
+@media (min-width: 1320px) { .nav__link { padding: 0 9px; font-size: 0.9rem; } }
+@media (min-width: 1500px) { .nav__link { padding: 0 14px; font-size: 0.92rem; } }
 .nav__search { display: grid; place-items: center; width: 44px; margin-left: 6px; border: 0; background: transparent; color: rgba(255, 255, 255, 0.85); cursor: pointer; }
 .nav__search:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
 .nav__search svg { width: 18px; height: 18px; }
@@ -1353,6 +1383,15 @@ body.assembly-modal-open { overflow: hidden; }
 .six-card-grid { display: grid; gap: 28px; grid-template-columns: minmax(0, 1fr); align-items: stretch; }
 @media (min-width: 700px) { .six-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1000px) { .six-card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+/* Five cards: on tablets the last card spans the row; on desktops three on top and two half-width cards below. */
+@media (min-width: 700px) and (max-width: 999px) { .six-card-grid--five > :last-child { grid-column: 1 / -1; } }
+@media (min-width: 1000px) {
+  .six-card-grid--five { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .six-card-grid--five > * { grid-column: span 2; }
+  .six-card-grid--five > :nth-child(n + 4) { grid-column: span 3; }
+  /* The wider Joining Us card gets a wide, shorter photo so it lines up with Latest News. */
+  .six-card-grid--five > :nth-child(4) .card-box__image { aspect-ratio: 21 / 8; }
+}
 .card-box { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; box-shadow: 0 6px 22px rgba(8, 37, 70, 0.08); transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease); }
 .card-box:hover { transform: translateY(-5px); box-shadow: 0 16px 36px rgba(8, 37, 70, 0.14); }
 .card-box__image { aspect-ratio: 16 / 10; overflow: hidden; background: var(--sky-50); }
@@ -1375,18 +1414,31 @@ body.assembly-modal-open { overflow: hidden; }
 .read-more-anim:hover .arrow { transform: translateX(5px); }
 
 /* Prayers of the Congregation: three designed prayer cards (PC, PC1, PC2) */
+/* Prayers of the Congregation: the cover card, then each prayer as heading + text (left) + card picture (right). */
+@font-face { font-family: "Cormorant Garamond"; font-style: italic; font-weight: 700; font-display: swap; src: url("/fonts/cormorant-garamond-latin-700-italic.woff2") format("woff2"); }
 .prayer-cards__intro { margin: 0 0 22px; color: var(--ink-soft); }
-.prayer-cards { display: grid; grid-template-columns: 1fr; gap: 26px; }
-@media (min-width: 700px) { .prayer-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (min-width: 1100px) { .prayer-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-.prayer-card { display: flex; flex-direction: column; scroll-margin-top: 110px; }
 .prayer-card__image { display: block; overflow: hidden; border-radius: 12px; background: #fbf6ea; border: 1px solid #e6d7b0; box-shadow: 0 12px 30px rgba(8, 37, 70, 0.12); transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease); }
 .prayer-card__image:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(8, 37, 70, 0.18); }
 .prayer-card__image img { display: block; width: 100%; height: auto; }
+.prayer-cover { max-width: 420px; margin: 0 auto 10px; scroll-margin-top: 110px; }
 .panel .prayer-card__title { margin: 14px 0 6px; font-size: 1.08rem; line-height: 1.35; color: var(--navy-800); text-align: center; }
-.prayer-card__text { margin-top: 2px; font-size: 0.93rem; }
-.prayer-card__text summary { cursor: pointer; color: var(--sky-700, #1d5f9e); font-weight: 600; text-align: center; padding: 6px 0; }
-.prayer-card__text p { margin: 8px 0; line-height: 1.6; color: var(--ink-soft); }
+.prayer-section { padding: 34px 0 6px; border-top: 1px solid #e3ebf4; scroll-margin-top: 110px; }
+.prayer-cover + .prayer-section { margin-top: 26px; }
+.panel .prayer-section__title {
+  margin: 0 0 14px; font-family: "Cormorant Garamond", Garamond, Georgia, serif; font-style: italic; font-weight: 700;
+  font-size: clamp(1.8rem, 1.4rem + 1.3vw, 2.45rem); line-height: 1.2; letter-spacing: 0; color: #8a1538;
+}
+.prayer-section__body { display: grid; grid-template-columns: 1fr; gap: 22px; align-items: start; }
+.prayer-section__text p { margin: 0 0 14px; line-height: 1.75; color: var(--ink); text-align: justify; text-justify: inter-word; }
+.prayer-section__text[lang="te"] p { line-height: 1.9; }
+.prayer-section__media { max-width: 440px; width: 100%; margin: 0 auto; }
+.prayer-section--image-only .prayer-section__media { max-width: 820px; }
+@media (min-width: 900px) {
+  .prayer-section__body { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 40px; }
+  .prayer-section__media { margin: 0; }
+  .prayer-section--image-only .prayer-section__body { grid-template-columns: 1fr; }
+  .prayer-section--image-only .prayer-section__media { margin: 0 auto; }
+}
 .prayer-cards__related { margin: 28px 0 0; color: var(--ink-soft); }
 /* PDF cards with a first-page thumbnail (Safeguarding) */
 .doc-card__layout { display: flex; gap: 18px; align-items: flex-start; }
@@ -1703,3 +1755,60 @@ body.team-lightbox-open { overflow: hidden; }
   .team-lightbox__prev, .team-lightbox__next { width: 36px; height: 42px; }
   .team-lightbox__close { right: 3px; top: 3px; transform: none; }
 }
+
+/* ==========================================================================
+   Institutes & Services
+   ========================================================================== */
+.inst-intro { max-width: 860px; margin-bottom: 26px; }
+.inst-intro p { margin: 0 0 10px; font-size: 1.05rem; line-height: 1.75; color: var(--ink); }
+@media (min-width: 640px) { .inst-intro p { text-align: justify; } }
+.inst-intro p:first-child { font-size: 1.12rem; color: var(--navy-800); }
+.inst-cards { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media (min-width: 640px) { .inst-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .inst-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.inst-cards > li { display: flex; }
+.inst-card {
+  position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; width: 100%;
+  padding: 26px 22px 22px; border-radius: 16px; background: #fff; border: 1px solid #dfe8f3;
+  box-shadow: 0 10px 28px rgba(8, 37, 70, 0.08); text-decoration: none; color: inherit; overflow: hidden;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.inst-card::before { content: ""; position: absolute; inset: 0 0 auto; height: 5px; background: var(--inst-accent, #1d5f9e); }
+.inst-card:hover, .inst-card:focus-visible { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(8, 37, 70, 0.16); border-color: var(--inst-accent, #1d5f9e); }
+.inst-cards > li:nth-child(1) .inst-card { --inst-accent: #1d5f9e; --inst-soft: #e6f0fb; }
+.inst-cards > li:nth-child(2) .inst-card { --inst-accent: #c2185b; --inst-soft: #fde8f0; }
+.inst-cards > li:nth-child(3) .inst-card { --inst-accent: #2e7d32; --inst-soft: #e7f4e8; }
+.inst-cards > li:nth-child(4) .inst-card { --inst-accent: #8a1538; --inst-soft: #f8e7ec; }
+.inst-card__icon { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: var(--inst-soft); color: var(--inst-accent); }
+.inst-card__icon svg { width: 28px; height: 28px; }
+.inst-card__title { font-family: var(--font-serif); font-weight: 700; font-size: 1.2rem; line-height: 1.3; color: var(--navy-800); margin-top: 6px; }
+.inst-card__count { display: inline-block; padding: 2px 10px; border-radius: 999px; background: var(--inst-soft); color: var(--inst-accent); font-weight: 700; font-size: 0.82rem; }
+.inst-card__text { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.6; flex: 1; }
+.inst-card__more { display: inline-flex; align-items: center; gap: 6px; margin-top: 4px; font-weight: 700; color: var(--inst-accent); }
+.inst-card__more svg { width: 16px; height: 16px; transition: transform 0.2s var(--ease); }
+.inst-card:hover .inst-card__more svg { transform: translateX(3px); }
+.inst-list { margin-top: 30px; }
+.panel .inst-list__title, .inst-list__title { display: flex; align-items: center; gap: 12px; margin: 0 0 14px; padding-bottom: 10px; border-bottom: 2px solid #e3ebf4; font-size: 1.35rem; color: var(--navy-800); text-transform: uppercase; letter-spacing: 0.02em; }
+.inst-list__note { margin: -4px 0 14px; color: var(--ink-soft); }
+.inst-list__items { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 760px) { .inst-list__items { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.inst-list__items li { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 12px; background: #f7fafd; border: 1px solid #e6eef7; }
+.inst-list__num { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #fff; border: 1px solid #cddcec; color: var(--navy-700); font-weight: 700; font-size: 0.85rem; }
+.inst-list__body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.inst-list__body strong { color: var(--navy-800); line-height: 1.4; }
+.inst-list__place { display: inline-flex; align-items: center; gap: 5px; color: var(--ink-soft); font-size: 0.9rem; }
+.inst-list__place svg { width: 14px; height: 14px; flex: none; color: var(--gold-500, #c9a227); }
+.inst-others { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 32px; padding-top: 18px; border-top: 1px solid #e3ebf4; }
+.inst-others > span { font-weight: 700; color: var(--navy-800); margin-right: 4px; }
+.inst-others .filter-chip { text-decoration: none; }
+
+/* Community → Our Life in the Community */
+@media (min-width: 640px) { .community-life p, .community-life li { text-align: justify; } }
+.community-photos { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 26px 0 28px; }
+@media (min-width: 640px) { .community-photos { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.community-photos a { display: block; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 26px rgba(8, 37, 70, 0.14); }
+.community-photos img { display: block; width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; transition: transform 0.35s var(--ease); }
+.community-photos a:hover img { transform: scale(1.04); }
+.community-symbols { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin: 22px 0 26px; }
+.community-symbols figure { margin: 0; flex: 0 1 340px; }
+.community-symbols img { display: block; width: 100%; height: auto; }

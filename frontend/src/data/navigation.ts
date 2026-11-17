@@ -21,7 +21,7 @@ export interface NavGroup {
 /**
  * Site map, exactly as set out by the Province ("Website 2" document):
  * Home · Provincialate · Spirituality · Mission · Community · JMJ Wisdom ·
- * Joining Us · Ven. Mary Glowrey. Every older URL still works and the
+ * Institutes & Services · Joining Us · Ven. Mary Glowrey · About Us. Every older URL still works and the
  * remaining pages (institutions, gallery, news, contact…) are linked from
  * the home page and footer.
  *
@@ -75,6 +75,17 @@ export const navigation: NavGroup[] = [
     ],
   },
   {
+    id: "institutes",
+    label: "Institutes & Services",
+    href: "/institutes-services",
+    items: [
+      { label: "Education Apostolate", href: "/institutes-services/education", icon: "school" },
+      { label: "Healthcare Apostolate", href: "/institutes-services/healthcare", icon: "health" },
+      { label: "Social Apostolate", href: "/institutes-services/social", icon: "social" },
+      { label: "Pastoral and Evangelization", href: "/institutes-services/pastoral-evangelization", icon: "church" },
+    ],
+  },
+  {
     id: "joining",
     label: "Joining Us",
     items: [
@@ -94,6 +105,7 @@ export const navigation: NavGroup[] = [
       { label: "Intercessions to Ven. Mary Glowrey", href: "/mary-glowrey/intercessions", icon: "heart", slug: "mary-glowrey-intercessions" },
     ],
   },
+  { id: "about", label: "About Us", href: "/about-us" },
 ];
 
 /** Flat list used by the footer and search index. */

@@ -41,8 +41,10 @@ describe("HomePage", () => {
 
   it("follows the reference site's home sections, in order", () => {
     renderWithProviders(<HomePage />);
-    const order = [/^welcome to the congregation/i, /^founder$/i, /^ven\. mary glowrey$/i, /^message from provincial superior$/i, /^joining us$/i, /^news strings$/i, /^latest news$/i, /^our presence$/i, /^photo gallery$/i];
+    const order = [/^welcome to the congregation/i, /^founder$/i, /^ven\. mary glowrey$/i, /^message from provincial superior$/i, /^joining us$/i, /^latest news$/i, /^our presence$/i, /^photo gallery$/i];
     const headings = screen.getAllByRole("heading").map((h) => h.textContent ?? "");
+    // The News Strings newsletter card was removed from the home page (November 2026).
+    expect(headings.some((h) => /^news strings$/i.test(h))).toBe(false);
     let last = -1;
     for (const name of order) {
       const at = headings.findIndex((h) => name.test(h));

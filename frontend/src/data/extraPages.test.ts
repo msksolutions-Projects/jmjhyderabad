@@ -35,7 +35,9 @@ describe("Hyderabad Province menu content", () => {
   });
 
   it("uses the full client-supplied Word document for Province ministries and history", () => {
-    expect(getSection("formation").markdown).toContain("The Congregation offers ample opportunities at every stage");
+    expect(getSection("formation").markdown).toContain("J.M.J formation is person oriented, contextualized and integral");
+    // The Province asked for the Word document's own "Stages of Formation" text to be removed.
+    expect(getSection("formation").markdown).not.toContain("freshness of life and new ideas");
     expect(getSection("our-founder").markdown).toContain("9 March 1779 in Diekirch");
     expect(getSection("our-history").markdown).toContain("29 September 2009");
     expect(getSection("social-work").markdown).toContain("Through various initiatives in education, healthcare");

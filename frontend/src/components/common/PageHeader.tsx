@@ -14,29 +14,39 @@ export interface PageHeaderProps {
   breadcrumbs?: PageHeaderCrumb[];
   /** Optional faint background photograph. */
   image?: string;
+  /**
+   * "sky": the image is shown in full colour, the title is centred with the breadcrumb below it,
+   * and the banner ends in a torn-paper edge (used on Prayers of the Congregation).
+   */
+  variant?: "default" | "sky";
 }
 
 /** Banner opening every interior page, with breadcrumbs. */
-export function PageHeader({ eyebrow, title, description, breadcrumbs = [], image }: PageHeaderProps) {
+export function PageHeader({ eyebrow, title, description, breadcrumbs = [], image, variant = "default" }: PageHeaderProps) {
+  const sky = variant === "sky";
+  const crumbs = (
+    <nav className="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li>
+          <Link to="/" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+            <Icon name="home" /> Home
+          </Link>
+        </li>
+        {breadcrumbs.map((crumb) => (
+          <li key={crumb.label}>{crumb.href ? <Link to={crumb.href}>{crumb.label}</Link> : crumb.label}</li>
+        ))}
+        <li aria-current="page">{title}</li>
+      </ol>
+    </nav>
+  );
   return (
-    <header className="page-hero">
+    <header className={sky ? "page-hero page-hero--sky" : "page-hero"}>
       {image && <img className="page-hero__bg" src={image} alt="" loading="eager" decoding="async" />}
       <div className="container">
-        <nav className="crumbs" aria-label="Breadcrumb">
-          <ol>
-            <li>
-              <Link to="/" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-                <Icon name="home" /> Home
-              </Link>
-            </li>
-            {breadcrumbs.map((crumb) => (
-              <li key={crumb.label}>{crumb.href ? <Link to={crumb.href}>{crumb.label}</Link> : crumb.label}</li>
-            ))}
-            <li aria-current="page">{title}</li>
-          </ol>
-        </nav>
-        {eyebrow && <div className="eyebrow">{eyebrow}</div>}
+        {!sky && crumbs}
+        {eyebrow && !sky && <div className="eyebrow">{eyebrow}</div>}
         <h1>{title}</h1>
+        {sky && crumbs}
         {description && <p>{description}</p>}
       </div>
     </header>

@@ -94,7 +94,8 @@ export function ContentPage({ slug, eyebrow, breadcrumbs }: ContentPageProps) {
         title={title}
         description={description}
         breadcrumbs={trail}
-        image={bannerImages[slug]}
+        image={slug === "congregation-prayers" ? "/media/banners/prayer-sky.webp" : bannerImages[slug]}
+        variant={slug === "congregation-prayers" ? "sky" : "default"}
       />
       <PageShell>
         {photos.length > 0 && (

@@ -23,7 +23,6 @@ import { hasSection } from "@/services/extraPages";
 const B = "/media/home-banners";
 
 /** Latest issue of the Province newsletter (the Province's counterpart to "The Encounter"). */
-const latestIssue = { title: "News Strings", label: "Issue 13", file: "/documents/publications/13-news-strings.pdf", cover: "/media/covers/news-strings-13.webp" };
 
 const bannerSrc = (n: string) => ({ src: `${B}/banner-${n}-sm.webp`, srcSet: `${B}/banner-${n}-sm.webp 600w, ${B}/banner-${n}-md.webp 1000w` });
 
@@ -68,7 +67,7 @@ function CardBox({ title, image, children, className }: CardProps) {
     <article className={`card-box${className ? ` ${className}` : ""}`}>
       {image && (
         <div className={`card-box__image${image.contain ? " card-box__image--contain" : ""}`}>
-          <img src={image.src} srcSet={image.srcSet} sizes="(min-width: 1000px) 380px, (min-width: 700px) 50vw, 100vw" alt={image.alt} loading="lazy" decoding="async" />
+          <img src={image.src} srcSet={image.srcSet} sizes="(min-width: 1000px) 600px, (min-width: 700px) 50vw, 100vw" alt={image.alt} loading="lazy" decoding="async" />
         </div>
       )}
       <div className="card-box__content">
@@ -205,22 +204,6 @@ function FourthCard() {
   );
 }
 
-function EncounterCard() {
-  return (
-    <article className="card-box encounter-home">
-      <h3>{latestIssue.title}</h3>
-      <a href={latestIssue.file} target="_blank" rel="noopener noreferrer" className="encounter-home__cover">
-        <img src={latestIssue.cover} alt={`Cover of ${latestIssue.title}, ${latestIssue.label}`} width={240} height={340} loading="lazy" decoding="async" />
-      </a>
-      <p className="title">{latestIssue.label} · The Province newsletter</p>
-      <div className="link-box">
-        <ThemeButton href={latestIssue.file}>View PDF</ThemeButton>
-        <ThemeButton to="/publications">All Issues</ThemeButton>
-      </div>
-    </article>
-  );
-}
-
 const thumbOf = (item: PublicNews) =>
   item.attachments?.find((a) => a.kind === "image")?.thumbUrl || item.attachments?.find((a) => a.kind === "image")?.url || item.image;
 
@@ -347,15 +330,14 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Six-card grid */}
-      <section className="six-card-grid-section" aria-label="Founder, charism, mission, news and newsletter">
+      {/* Card grid: three cards on top, two wider cards below (the News Strings card was removed) */}
+      <section className="six-card-grid-section" aria-label="Founder, Mary Glowrey, Provincial Superior, joining us and news">
         <div className="container">
-          <div className="six-card-grid">
+          <div className="six-card-grid six-card-grid--five">
             <FounderCard />
             <SecondCard />
             <ThirdCard />
             <FourthCard />
-            <EncounterCard />
             <NewsCard />
           </div>
         </div>
