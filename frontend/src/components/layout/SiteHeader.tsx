@@ -117,6 +117,12 @@ function DesktopNav({ pathname, search, onSearch }: { pathname: string; search: 
               </li>
             );
           })}
+          <li className="nav__item">
+            <Link to="/admin/login" className="nav__link nav__link--staff">
+              <Icon name="lock" />
+              Staff Login
+            </Link>
+          </li>
         </ul>
         <button type="button" className="nav__search" onClick={onSearch} aria-label="Open search" title="Search (Ctrl + K)">
           <Icon name="search" />

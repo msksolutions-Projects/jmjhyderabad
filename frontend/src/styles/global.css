@@ -1356,10 +1356,13 @@ body.assembly-modal-open { overflow: hidden; }
   .nav__link { padding: 0 12px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.02em; height: 54px; }
   .nav__link svg { width: 14px; height: 14px; }
 }
-/* Ten menu sections: keep them on one line on every laptop screen. */
-@media (min-width: 1100px) and (max-width: 1319px) { .nav__link { padding: 0 5px; font-size: 0.82rem; letter-spacing: 0.01em; } .nav__search { width: 36px; margin-left: 2px; } }
-@media (min-width: 1320px) { .nav__link { padding: 0 9px; font-size: 0.9rem; } }
-@media (min-width: 1500px) { .nav__link { padding: 0 14px; font-size: 0.92rem; } }
+/* Staff Login (last menu item): small lock icon before the words. */
+.nav__link--staff { gap: 5px; }
+.nav__link--staff svg { width: 14px; height: 14px; flex: none; opacity: 0.85; }
+/* Ten menu sections plus Staff Login: keep them on one line on every laptop screen. */
+@media (min-width: 1100px) and (max-width: 1319px) { .nav__link { padding: 0 3px; font-size: 0.77rem; letter-spacing: 0; } .nav__search { width: 34px; margin-left: 2px; } .nav__link--staff svg { display: none; } }
+@media (min-width: 1320px) { .nav__link { padding: 0 6px; font-size: 0.86rem; } }
+@media (min-width: 1500px) { .nav__link { padding: 0 11px; font-size: 0.92rem; } }
 .nav__search { display: grid; place-items: center; width: 44px; margin-left: 6px; border: 0; background: transparent; color: rgba(255, 255, 255, 0.85); cursor: pointer; }
 .nav__search:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
 .nav__search svg { width: 18px; height: 18px; }
